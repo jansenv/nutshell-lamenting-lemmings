@@ -9,6 +9,18 @@ export const deleteEvent = articleId => {
     .then(getNews)
 }
 
+export const editNews = (article) => {
+    return fetch(`http://localhost:3000/news/${article.id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(taskObject)
+    })
+    .then(getNews)
+
+}
+
 export const getNews = () => fetch("http://localhost:3000/news?_expand=user")
 .then(res => res.json())
 .then(parsedNews => news = parsedNews)
