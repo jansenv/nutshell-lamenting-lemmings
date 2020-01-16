@@ -1,5 +1,5 @@
-// Authored by: Holden
-import { saveEvent, getEvents, useEvents } from "./EventDataProvider.js"
+// Authored by: Holden Parker
+import { saveEvent, getEvents, useEvents, editEvent } from "./EventDataProvider.js"
 
 const eventHub = document.querySelector(".container")
 const contentTarget = document.querySelector(".addEventButton")
@@ -8,7 +8,30 @@ export const AddEventForm = () => {
 
     eventHub.addEventListener("click", e => {
         if (e.target.id === "saveEventButton") {
-        // Make a new object representation of a note
+        const hiddenInputValue = document.querySelector("#event-id").value
+        
+        if (hiddenInputValue !== "") {
+        const editedEvent = {
+            userId: parseInt(sessionStorage.getItem("activeUser"), 10),
+            name: document.querySelector("#eventNameText").value,
+            location: document.querySelector("#eventLocationText").value,
+            timestamp: document.querySelector("#eventDate").value,
+            id: parseInt(document.querySelector("#event-id").value, 10)
+        }
+
+        editEvent(editedEvent).then(() => {
+          eventHub.dispatchEvent(new CustomEvent("eventHasBeenEdited"))
+        })
+
+        const resetEventForm = () => {
+            document.querySelector("#eventNameText").value = ""
+            document.querySelector("#eventLocationText").value = ""
+            document.querySelector("#eventDate").value = ""
+        }
+        resetEventForm()
+
+        document.querySelector("#event-id").value = ""
+      } else {
         const newEvent = {
             userId: parseInt(sessionStorage.getItem("activeUser"), 10),
             name: document.querySelector("#eventNameText").value,
@@ -25,10 +48,8 @@ export const AddEventForm = () => {
             document.querySelector("#eventDate").value = ""
         }
         resetEventForm()
-        const dialogElement = e.target.parentNode
-        dialogElement.close()
     }
-})
+    }})
 
     eventHub.addEventListener("click", e => {
     if (e.target.id.startsWith("editEvent--")) {
@@ -57,9 +78,9 @@ export const AddEventForm = () => {
           <button id="button--addEvent">Add Event</button>
 
           <dialog class="dialog--addEvent">
-          <label class="dialogTitles">Add a New Event!</label>
-          <button class="button--close">X</button>
-          <hr>
+            <label class="dialogTitles">Add a New Event!</label>
+            <button class="button--close">X</button>
+            <hr>
               <div>
                 <input type="hidden" id="event-id" />
                 <label for="eventNameText">Name of Event:</label>
@@ -72,7 +93,7 @@ export const AddEventForm = () => {
                 <input type="datetime-local" id="eventDate">
                 <br>
               </div>
-              <button class="button--save" id="saveEventButton">Save</button>         
+              <button class="button--save button--close" id="saveEventButton">Save</button>         
           </dialog>
       </div>`
     }

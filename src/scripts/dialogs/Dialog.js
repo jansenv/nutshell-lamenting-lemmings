@@ -1,4 +1,4 @@
-// Authored by: Holden
+// Authored by: Holden Parker
 const eventHub = document.querySelector(".container")
 
 const initializeDialogButtonEvents = () => {

@@ -1,4 +1,4 @@
-// Authored by: Holden
+// Authored by: Holden Parker
 import { useEvents, deleteEvent } from "./EventDataProvider.js"
 import { Event } from "./Event.js"
 
@@ -7,6 +7,10 @@ const contentTarget = document.querySelector(".events")
 
 const EventList = () => {
   const events = useEvents()
+
+  eventHub.addEventListener("eventHasBeenEdited", e => {
+    render(useEvents())
+  })
   
   eventHub.addEventListener("newEventSaved", e => {
     render(useEvents())

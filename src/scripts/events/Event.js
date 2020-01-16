@@ -1,4 +1,4 @@
-// Authored by: Holden
+// Authored by: Holden Parker
 export const Event = (event) => {
   return `
   <section>
