@@ -125,9 +125,9 @@ console.log(sessionStorage.getItem("activeUser"))
         Last Name: <input id="lastName" type="text" /> <br>
       </div>
         Email: <input class="email" id="email" type="text" /><br>
-        Password: <input class="password" id ="password" type="text" autocomplete="off" />
+        Password: <input class="password" id ="password" type="password" autocomplete="off" />
         <div class="hidden confirmPassword newUserForm">
-        Confirm Password: <input id="confirmPassword" type="text" /><br>
+        Confirm Password: <input id="confirmPassword" type="password" /><br>
         
         <button class="save--user">Save New User</button>
         </div>
