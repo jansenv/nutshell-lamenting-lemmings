@@ -15,3 +15,6 @@
 .hidden{
   display: none;
 }
+#password #confirmPassword{
+font-family: 'password';
+}
