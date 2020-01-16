@@ -1,3 +1,4 @@
+// Authored by: Holden
 import { useEvents, deleteEvent } from "./EventDataProvider.js"
 import { Event } from "./Event.js"
 

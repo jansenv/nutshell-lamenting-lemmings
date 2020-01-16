@@ -1,4 +1,5 @@
-import { saveEvent, getEvents } from "./EventDataProvider.js"
+// Authored by: Holden
+import { saveEvent, getEvents, useEvents } from "./EventDataProvider.js"
 
 const eventHub = document.querySelector(".container")
 const contentTarget = document.querySelector(".addEventButton")
@@ -9,7 +10,7 @@ export const AddEventForm = () => {
         if (e.target.id === "saveEventButton") {
         // Make a new object representation of a note
         const newEvent = {
-            userId: sessionStorage.getItem("activeUser"),
+            userId: parseInt(sessionStorage.getItem("activeUser"), 10),
             name: document.querySelector("#eventNameText").value,
             location: document.querySelector("#eventLocationText").value,
             timestamp: document.querySelector("#eventDate").value,
@@ -29,6 +30,25 @@ export const AddEventForm = () => {
     }
 })
 
+    eventHub.addEventListener("click", e => {
+    if (e.target.id.startsWith("editEvent--")) {
+      const [prefix, id] = e.target.id.split("--")
+
+      const allEvents = useEvents()
+  
+      const theFoundEvent = allEvents.find(
+        (eventObj) => {
+          return eventObj.id === parseInt(id, 10)
+        }
+      )
+  
+      document.getElementById("event-id").value = theFoundEvent.id
+      document.getElementById("eventNameText").value = theFoundEvent.name
+      document.getElementById("eventLocationText").value = theFoundEvent.location
+
+      const message = new CustomEvent("editEventButtonClicked")
+      eventHub.dispatchEvent(message)
+    }})
 
 
     const render = () => {
@@ -41,6 +61,7 @@ export const AddEventForm = () => {
           <button class="button--close">X</button>
           <hr>
               <div>
+                <input type="hidden" id="event-id" />
                 <label for="eventNameText">Name of Event:</label>
                 <input id="eventNameText" type="text" />
                 <br>

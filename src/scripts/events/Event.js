@@ -1,3 +1,4 @@
+// Authored by: Holden
 export const Event = (event) => {
   return `
   <section>
@@ -5,7 +6,10 @@ export const Event = (event) => {
   <div>When: ${event.timestamp}</div>
   <div>Location: ${event.location}</div>
   <div>Posted by: ${event.user.firstName} ${event.user.lastName}</div>
-  <button class="button--edit" id="editEvent--${event.id}">Edit</button>
-  <button class="button--delete" id="deleteEvent--${event.id}">Delete</button>
+  <div id="edit--${event.userId}">
+    <button class="button--edit" id="editEvent--${event.id}">Edit</button>
+    <button class="button--delete" id="deleteEvent--${event.id}">Delete</button>
+  </div>
   </section>`
 }
+
