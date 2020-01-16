@@ -1,74 +1,32 @@
 // Coded by Spencer Truett
 
-import { useTasks } from "./TaskDataProvider.js"
+import { useTasks, deleteTask } from "./TaskDataProvider.js"
+import { Task } from "./Task.js"
 
 
-
-
-const contentTarget = document.querySelector(".tasks")
 const eventHub = document.querySelector(".container")
+const contentTarget = document.querySelector(".tasks")
 
-const TaskListComponent = () => {
+const TaskList = () => {
+  const tasks = useTasks()
+  
+  eventHub.addEventListener("newTaskSaved", e => {
+    render(useTasks())
+  })
 
-    eventHub.addEventListener("noteHasBeenEdited", event => {
-        const updatedTasks = useTasks()
-        render(updatedTasks)
-    })
-
-    eventHub.addEventListener("click", clickEvent => {
-        if (clickEvent.target.id.startsWith("editTask--")) {
-            const [deletePrefix, taskId] = clickEvent.target.id.split("--")
-
-            const editEvent = new CustomEvent("editButtonClicked", {
-                detail: {
-                    taskId: taskId
-                }
-            })
-
-            eventHub.dispatchEvent(editEvent)
-        }
-
-        if (clickEvent.target.id.startsWith("deleteTask--")) {
-            const [deletePrefix, taskId] = clickEvent.target.id.split("--")
-
-            deleteNote(taskId).then(
-                () => {
-                    const theNewTasks = useTasks()
-                    render(theNewTasks)
-                }
-            )
-        }
-    })
-
-    const renderTasksAgain = () => {
-        const allTheTasks = useTasks()
-        render(allTheTasks)
-
+  eventHub.addEventListener("click", e => {
+    if (e.target.id.startsWith("deleteTask--")) {
+      const [prefix, id] = e.target.id.split("--")
+      deleteTask(id).then(() => render(useTasks()))
     }
+  })
 
-    eventHub.addEventListener("taskCreated", event => {
-        renderTasksAgain()
-    })
-
-    eventHub.addEventListener("showNoteButtonClicked", event => {
-        renderTasksAgain()
-    })
-
-    const render = (tasksCollection) => {
-        contentTarget.innerHTML = tasksCollection.map(
-            (individualTask) => {
-                return `
-                    <section class="note">
-                        <div>${individualTask.name}</div>
-                        <div>${individualTask.task}</div>
-                        <button id="deleteNote--${individualTask.id}">Delete</button>
-                        <button id="editNote--${individualTask.id}">Edit</button>
-                    </section>
-                `
-            }
-        ).join("")
-    }
-
+  const render = (eve) => {
+    contentTarget.innerHTML = ""
+    contentTarget.innerHTML = 
+    eve.map(task => Task(task)).join("")
+  }
+  render(tasks)
 }
 
-export default TaskListComponent
+export default TaskList
