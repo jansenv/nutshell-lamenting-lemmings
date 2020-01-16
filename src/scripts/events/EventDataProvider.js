@@ -1,3 +1,4 @@
+// Authored by: Holden Parker
 let events = []
 
 export const useEvents = () => events.slice()

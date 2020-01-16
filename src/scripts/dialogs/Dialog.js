@@ -1,5 +1,7 @@
+// Authored by: Holden Parker
+const eventHub = document.querySelector(".container")
+
 const initializeDialogButtonEvents = () => {
-  // CAN'T TOUCH THIS - START
   const allCloseButtons = document.querySelectorAll(".button--close")
 
   for (const btn of allCloseButtons) {
@@ -24,6 +26,12 @@ const initializeDialogButtonEvents = () => {
           }
       )
   }
+
+  eventHub.addEventListener("editEventButtonClicked", e => {
+    const dialogSelector = document.querySelector(".dialog--addEvent")
+    dialogSelector.showModal()
+  })
+  
 }
 
 export default initializeDialogButtonEvents
