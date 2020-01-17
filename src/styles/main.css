@@ -1,23 +1,4 @@
-.logInLink{
-  font-size: 18px;
-}
-.CreateNewUserLink{
-  font-size: 18px;
-  float: right;
-}
-.FormContainer{
-  text-align: center;
-}
-.welcome{
-  font-size: 48px;
-  font-family: cursive;
-}
-.hidden{
-  display: none;
-}
-#password #confirmPassword{
-font-family: 'password';
-}
+@import 'log-in.css';
 
 .redX {
   float: right;

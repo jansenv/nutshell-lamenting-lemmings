@@ -62,6 +62,8 @@ export const LoginForm = () => {
           sessionStorage.setItem("activeUser", foundUser.id)
           console.log(sessionStorage.getItem("activeUser"))
           contentTarget.innerHTML =""
+          const message = new CustomEvent("userLoggedIn")
+          eventHub.dispatchEvent(message)
         }
         catch{
           window.alert("Your email or password is incorrect")
