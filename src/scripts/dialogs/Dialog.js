@@ -1,3 +1,5 @@
+import { resetEventForm } from "../events/EventForm.js"
+
 // Authored by: Holden Parker
 const eventHub = document.querySelector(".container")
 
@@ -10,18 +12,20 @@ const initializeDialogButtonEvents = () => {
       theEvent => {
         const dialogElement = theEvent.target.parentNode
         dialogElement.close()
-      }
+      }    
     )
   }
 
   const allDialogButtons = document.querySelectorAll("button[id^='button--']")
 
   for (const btn of allDialogButtons) {
+    
       btn.addEventListener(
           "click",
           theEvent => {
               const dialogSiblingSelector = `#${theEvent.target.id}+dialog`
               const theDialog = document.querySelector(dialogSiblingSelector)
+              resetEventForm()
               theDialog.showModal()
           }
       )

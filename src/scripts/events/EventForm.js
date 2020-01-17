@@ -4,30 +4,14 @@ import { saveEvent, getEvents, useEvents, editEvent } from "./EventDataProvider.
 const eventHub = document.querySelector(".container")
 const contentTarget = document.querySelector(".addEventButton")
 
-export const AddEventForm = () => {
-
-  const timeFormat = () => {
-    const [date, militaryTime] = document.querySelector("#eventDate").value.split("T")
-    let [hours, minutes] = militaryTime.split(":")
-    if (hours >= 13) {
-      return `${(hours - 12)}:${minutes} PM`
-    } else if (hours === '12') {
-      return `${hours}:${minutes} PM`
-    } else if (hours < 12 && hours > 9) {
-      return `${hours}:${minutes} AM`
-    } else if (hours <= 9 && hours > 0) {
-      const [zero, currentHour] = hours.split("")
-      return `${currentHour}:${minutes} AM`
-    } else if (hours === '00') {
-      return `${hours = 12}:${minutes} AM`
-    }
-    }
-
-  const resetEventForm = () => {
-    document.querySelector("#eventNameText").value = ""
-    document.querySelector("#eventLocationText").value = ""
-    document.querySelector("#eventDate").value = ""
+export const resetEventForm = () => {
+  document.querySelector("#eventNameText").value = ""
+  document.querySelector("#eventLocationText").value = ""
+  document.querySelector("#eventDate").value = ""
 }
+
+
+export const AddEventForm = () => {
 
     eventHub.addEventListener("click", e => {
         if (e.target.id === "saveEventButton") {
@@ -38,28 +22,28 @@ export const AddEventForm = () => {
             userId: parseInt(sessionStorage.getItem("activeUser"), 10),
             name: document.querySelector("#eventNameText").value,
             location: document.querySelector("#eventLocationText").value,
-            timestamp: new Date(document.querySelector("#eventDate").value).toLocaleDateString('en-US') + " " + timeFormat(),
+            timestamp: document.querySelector("#eventDate").value,
             id: parseInt(document.querySelector("#event-id").value, 10)
         }
 
         editEvent(editedEvent).then(() => {
           eventHub.dispatchEvent(new CustomEvent("eventHasBeenEdited"))
-        })
-        resetEventForm()
+        }).then(() => resetEventForm())
+        
         document.querySelector("#event-id").value = ""
       } else {
         const newEvent = {
             userId: parseInt(sessionStorage.getItem("activeUser"), 10),
             name: document.querySelector("#eventNameText").value,
             location: document.querySelector("#eventLocationText").value,
-            timestamp: new Date(document.querySelector("#eventDate").value).toLocaleDateString('en-US') + " " + timeFormat(),
+            timestamp: document.querySelector("#eventDate").value
         }
 
         saveEvent(newEvent).then(getEvents).then(() => {
             const message = new CustomEvent("newEventSaved")
             eventHub.dispatchEvent(message)
-        })
-        resetEventForm()
+        }).then(() => resetEventForm())
+        
     }
     }})
 

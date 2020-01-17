@@ -23,6 +23,10 @@ const EventList = () => {
     }
   })
 
+  eventHub.addEventListener("userLoggedIn", e => {
+    render(useEvents())
+  })
+
   const render = (eve) => {
     contentTarget.innerHTML = ""
     contentTarget.innerHTML = 
