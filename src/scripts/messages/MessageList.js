@@ -3,6 +3,7 @@ import { Message } from "./Message.js"
 
 
 
+
 const eventHub = document.querySelector(".container")
 const contentTarget = document.querySelector(".chat")
 
@@ -11,7 +12,10 @@ const contentTarget = document.querySelector(".chat")
 export const MessageList=()=>{
     const messages = useMessages()
     
-  
+  eventHub.addEventListener("newMessageSaved",e=>{
+    const newMessages = useMessages()
+    render(newMessages)
+  })
   
     eventHub.addEventListener("click", e => {
       if (e.target.id.startsWith("deleteMessage--")) {

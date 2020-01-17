@@ -120,6 +120,7 @@ console.log(sessionStorage.getItem("activeUser"))
       <p class="welcome">Welcome!</p>
   
       <div class ="logInForm">
+      <form>
       <div class="hidden newUserForm">
         First Name: <input id="firstName" type="text" /> <br>
         Last Name: <input id="lastName" type="text" /> <br>
@@ -128,7 +129,7 @@ console.log(sessionStorage.getItem("activeUser"))
         Password: <input class="password" id ="password" type="password" autocomplete="off" />
         <div class="hidden confirmPassword newUserForm">
         Confirm Password: <input id="confirmPassword" type="password" /><br>
-        
+        </form>
         <button class="save--user">Save New User</button>
         </div>
         <br>

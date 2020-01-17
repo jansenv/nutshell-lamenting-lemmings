@@ -1,5 +1,7 @@
+import { saveMessage, getMessages } from "./MessagesDataProvider.js"
 
-
+const eventHub = document.querySelector(".container")
+const contentTarget = document.querySelector(".addMessageButton")
 
 
 export const AddMessageForm = () => {
@@ -17,7 +19,7 @@ export const AddMessageForm = () => {
           eventHub.dispatchEvent(message)
       })
       const resetMessageForm = () => {
-          document.querySelector("#MessageText").value = ""
+          document.querySelector("#messageText").value = ""
           
       }
       resetMessageForm()
@@ -32,14 +34,15 @@ export const AddMessageForm = () => {
   contentTarget.innerHTML =   
     `<div class="addMessage">
         <button id="button--addMessage">Add Message</button>
-
+        
         <dialog class="dialog--addMessage">
+        <input type="hidden" class="hiddenMessageId"/>
         <label class="dialogTitles">Add a New Message!</label>
         <button class="button--close">X</button>
         <hr>
             <div>
-              <label for="messageNameText">Name of Message:</label>
-              <input id="eventNameText" type="text" />
+              <label for="messageNameText">Message:</label>
+              <input id="messageText" type="text" />
               <br>
 
             </div>

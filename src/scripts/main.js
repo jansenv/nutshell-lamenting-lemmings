@@ -9,6 +9,7 @@ import { AddTaskForm } from "./tasks/TaskForm.js";
 import TaskList from "./tasks/TaskList.js";
 import { getMessages } from "./messages/MessagesDataProvider.js";
 import { MessageList } from "./messages/MessageList.js"
+import { AddMessageForm } from "./messages/MessageForm.js";
 
 getUsers()
 .then(LoginForm)
@@ -19,7 +20,9 @@ getUsers()
 .then(EventList)
 .then(AddTaskForm)
 .then(TaskList)
+.then(AddMessageForm)
 .then(MessageList)
+
 
 
 
