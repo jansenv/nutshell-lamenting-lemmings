@@ -9,6 +9,10 @@ const contentTarget = document.querySelector(".tasks")
 
 const TaskList = () => {
   const tasks = useTasks()
+
+  eventHub.addEventListener("taskHasBeenEdited", e => {
+    render(useTasks())
+  })
   
   eventHub.addEventListener("newTaskSaved", e => {
     render(useTasks())
@@ -22,7 +26,6 @@ const TaskList = () => {
   })
 
   const render = (eve) => {
-    contentTarget.innerHTML = ""
     contentTarget.innerHTML = 
     eve.map(task => Task(task)).join("")
   }
