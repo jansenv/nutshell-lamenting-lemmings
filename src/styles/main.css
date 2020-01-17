@@ -18,3 +18,9 @@
 #password #confirmPassword{
 font-family: 'password';
 }
+
+.redX {
+  float: right;
+  background-color: #f44336;
+  border-radius: 8px;
+}
