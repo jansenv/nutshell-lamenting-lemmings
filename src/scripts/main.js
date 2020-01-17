@@ -7,6 +7,9 @@ import EventList from "./events/EventList.js";
 import { getTasks } from "./tasks/TaskDataProvider.js";
 import { AddTaskForm } from "./tasks/TaskForm.js";
 import TaskList from "./tasks/TaskList.js";
+import { getNews } from "./news/NewsDataProvider.js";
+import NewsList from "./news/NewsList.js";
+import { AddNewsForm } from "./news/NewsForm.js";
 
 
 getUsers()
@@ -18,3 +21,7 @@ getUsers()
 .then(AddTaskForm)
 .then(TaskList)
 .then(initializeAddEventsButton)
+
+getNews()
+.then(AddNewsForm)
+.then(NewsList)
