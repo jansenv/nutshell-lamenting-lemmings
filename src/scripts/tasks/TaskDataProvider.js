@@ -2,19 +2,15 @@
 
 let tasks = []
 
-const setTasks = (taskArray) => {
-    tasks = taskArray.slice()
-}
-
 export const useTasks = () => tasks.slice()
 
-export const editTask = (taskObject) => {
-    return fetch(`http://localhost:3000/tasks/${taskObject.id}`, {
+export const editTask = (task) => {
+    return fetch(`http://localhost:3000/tasks/${task.id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(taskObject)
+        body: JSON.stringify(task)
     })
         .then(getTasks)
 
@@ -44,4 +40,16 @@ export const getTasks = () => {
         .then((taskArray) => {
             tasks = taskArray.slice()
         })
+}
+
+export const patchTask = (task) => {
+    return fetch(`http://localhost:3000/tasks/${task.id}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(task)
+    })
+        .then(getTasks)
+
 }

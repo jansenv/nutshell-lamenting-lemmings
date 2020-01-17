@@ -39,6 +39,11 @@ const initializeDialogButtonEvents = () => {
     const dialogSelector = document.querySelector(".dialog--addArticle")
     dialogSelector.showModal()
   })
+
+  eventHub.addEventListener("editTaskButtonClicked", e => {
+    const dialogSelector = document.querySelector(".dialog--addTask")
+    dialogSelector.showModal()
+  })
   
 }
 
