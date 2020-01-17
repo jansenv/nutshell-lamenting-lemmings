@@ -56,7 +56,7 @@ export const AddEventForm = () => {
       const [prefix, id] = e.target.id.split("--")
 
       const allEvents = useEvents()
-  
+   
       const theFoundEvent = allEvents.find(
         (eventObj) => {
           return eventObj.id === parseInt(id, 10)

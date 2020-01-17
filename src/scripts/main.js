@@ -10,18 +10,22 @@ import TaskList from "./tasks/TaskList.js";
 import { getMessages } from "./messages/MessagesDataProvider.js";
 import { MessageList } from "./messages/MessageList.js"
 import { AddMessageForm } from "./messages/MessageForm.js";
+import { getFriends } from "./friends/FriendsDataProvider.js";
+import { addFriend } from "./friends/AddFriend.js";
 
 getUsers()
 .then(LoginForm)
 .then(getEvents)
 .then(getMessages)
 .then(getTasks)
+.then(getFriends)
 .then(AddEventForm)
 .then(EventList)
 .then(AddTaskForm)
 .then(TaskList)
 .then(AddMessageForm)
 .then(MessageList)
+.then(addFriend)
 
 
 
