@@ -1,22 +1,26 @@
 import { NewsArticle } from "./NewsComponent.js"
-import { useNews } from "./NewsDataProvider.js"
+import { useNews, deleteNews } from "./NewsDataProvider.js"
 
 const eventHub = document.querySelector(".container")
 const contentTarget = document.querySelector(".news")
 
 const NewsList = () => {
   const news = useNews()
-  
-eventHub.addEventListener("newArticleSaved", e => {
-    render(useNews())
-})
 
-eventHub.addEventListener("click", e => {
+  eventHub.addEventListener("newsHasBeenEdited", e => {
+    render(useNews())
+  })
+  
+  eventHub.addEventListener("newArticleSaved", e => {
+    render(useNews())
+  })
+  
+  eventHub.addEventListener("click", e => {
     if (e.target.id.startsWith("deleteNewsArticle--")) {
-        const [prefix, id] = e.target.id.split("--")
-        (id).then(() => render(useNews()))
+      const [prefix, id] = e.target.id.split("--")
+      deleteNews(id).then(() => render(useNews()))
     }
-})
+  })
 
   const render = (articles) => {
     contentTarget.innerHTML = `<h2>News</h2>`

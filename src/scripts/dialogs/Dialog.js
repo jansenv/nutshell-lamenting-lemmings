@@ -1,3 +1,5 @@
+import { resetNewsForm } from "../news/NewsForm.js"
+
 // Authored by: Holden Parker
 const eventHub = document.querySelector(".container")
 
@@ -10,6 +12,7 @@ const initializeDialogButtonEvents = () => {
       theEvent => {
         const dialogElement = theEvent.target.parentNode
         dialogElement.close()
+        resetNewsForm()
       }
     )
   }
@@ -29,6 +32,11 @@ const initializeDialogButtonEvents = () => {
 
   eventHub.addEventListener("editEventButtonClicked", e => {
     const dialogSelector = document.querySelector(".dialog--addEvent")
+    dialogSelector.showModal()
+  })
+
+  eventHub.addEventListener("editNewsButtonClicked", e => {
+    const dialogSelector = document.querySelector(".dialog--addArticle")
     dialogSelector.showModal()
   })
   
