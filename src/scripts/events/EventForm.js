@@ -4,6 +4,13 @@ import { saveEvent, getEvents, useEvents, editEvent } from "./EventDataProvider.
 const eventHub = document.querySelector(".container")
 const contentTarget = document.querySelector(".addEventButton")
 
+export const resetEventForm = () => {
+  document.querySelector("#eventNameText").value = ""
+  document.querySelector("#eventLocationText").value = ""
+  document.querySelector("#eventDate").value = ""
+}
+
+
 export const AddEventForm = () => {
 
     eventHub.addEventListener("click", e => {
@@ -21,33 +28,22 @@ export const AddEventForm = () => {
 
         editEvent(editedEvent).then(() => {
           eventHub.dispatchEvent(new CustomEvent("eventHasBeenEdited"))
-        })
-
-        const resetEventForm = () => {
-            document.querySelector("#eventNameText").value = ""
-            document.querySelector("#eventLocationText").value = ""
-            document.querySelector("#eventDate").value = ""
-        }
-        resetEventForm()
-
+        }).then(() => resetEventForm())
+        
         document.querySelector("#event-id").value = ""
       } else {
         const newEvent = {
             userId: parseInt(sessionStorage.getItem("activeUser"), 10),
             name: document.querySelector("#eventNameText").value,
             location: document.querySelector("#eventLocationText").value,
-            timestamp: document.querySelector("#eventDate").value,
+            timestamp: document.querySelector("#eventDate").value
         }
+
         saveEvent(newEvent).then(getEvents).then(() => {
             const message = new CustomEvent("newEventSaved")
             eventHub.dispatchEvent(message)
-        })
-        const resetEventForm = () => {
-            document.querySelector("#eventNameText").value = ""
-            document.querySelector("#eventLocationText").value = ""
-            document.querySelector("#eventDate").value = ""
-        }
-        resetEventForm()
+        }).then(() => resetEventForm())
+        
     }
     }})
 
