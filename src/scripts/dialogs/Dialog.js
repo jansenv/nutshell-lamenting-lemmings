@@ -1,4 +1,5 @@
 import { resetNewsForm } from "../news/NewsForm.js"
+import { resetEventForm } from "../events/EventForm.js"
 
 // Authored by: Holden Parker
 const eventHub = document.querySelector(".container")
@@ -13,18 +14,20 @@ const initializeDialogButtonEvents = () => {
         const dialogElement = theEvent.target.parentNode
         dialogElement.close()
         resetNewsForm()
-      }
+      }    
     )
   }
 
   const allDialogButtons = document.querySelectorAll("button[id^='button--']")
 
   for (const btn of allDialogButtons) {
+    
       btn.addEventListener(
           "click",
           theEvent => {
               const dialogSiblingSelector = `#${theEvent.target.id}+dialog`
               const theDialog = document.querySelector(dialogSiblingSelector)
+              resetEventForm()
               theDialog.showModal()
           }
       )
