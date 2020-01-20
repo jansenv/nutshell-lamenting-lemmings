@@ -30,26 +30,31 @@ export const AddTaskForm = () => {
         
 
     if (e.target.id === "saveTaskButton") {
-        
+       
+      const name = document.querySelector("#taskName").value
+      const task = document.querySelector("#taskText").value
+      const dueDate = document.querySelector("#taskDate").value
+      const isCompleted =document.querySelector("#checkbox").value
         
         let hiddenInputValue = document.querySelector("#taskId").value
         
       if (hiddenInputValue !== "") {
 
-       
-
+        if (name === "" || task === "" || dueDate === "" ) {
+          window.alert("Please Fill out all Input Fields")
+        } else {
         const editedTask = {
           userId: parseInt(sessionStorage.getItem("activeUser"), 10),
-          name: document.querySelector("#taskName").value,
-          task: document.querySelector("#taskText").value,
-          dueDate: document.querySelector("#taskDate").value,
+          name: name,
+          task: task,
+          dueDate: dueDate,
           id: parseInt(document.querySelector("#taskId").value, 10),
-          isCompleted: document.querySelector("#checkbox").value
+          isCompleted: isCompleted
         };
-
         editTask(editedTask).then(() => {
           eventHub.dispatchEvent(new CustomEvent("taskHasBeenEdited"));
         });
+      }
 
         const resetTaskForm = () => {
           document.querySelector("#taskName").value = "";
@@ -61,20 +66,27 @@ export const AddTaskForm = () => {
 
         document.querySelector("#taskId").value = "";
       } else {
+        if (name === "" || task === "" || dueDate === "" ) {
+          window.alert("Please Fill out all Input Fields")
+        } else {
         const newEvent = {
           userId: sessionStorage.getItem("activeUser"),
-          name: document.querySelector("#taskName").value,
-          task: document.querySelector("#taskText").value,
-          dueDate: document.querySelector("#taskDate").value,
+          name: name,
+          task: task,
+          dueDate: dueDate,
           isCompleted: false
-        };
-
+        }
         saveTask(newEvent)
           .then(getTasks)
           .then(() => {
             const message = new CustomEvent("newTaskSaved");
             eventHub.dispatchEvent(message);
           });
+          const dialogElement = e.target.parentNode;
+          dialogElement.close()
+          resetTaskForm();
+      };
+
 
         const resetTaskForm = () => {
           document.querySelector("#taskName").value = "";
@@ -82,9 +94,7 @@ export const AddTaskForm = () => {
           document.querySelector("#taskDate").value = "";
         };
 
-        resetTaskForm();
-        const dialogElement = e.target.parentNode;
-        dialogElement.close();
+
       }
     }
   });
@@ -135,7 +145,7 @@ export const AddTaskForm = () => {
                 <input type="hidden" id="checkbox" value=FALSE />
               </div>
 
-              <button class="button--save button--close" id="saveTaskButton">Save</button>         
+              <button class="button--save" id="saveTaskButton">Save</button>         
           </dialog>
       </div>`;
   };

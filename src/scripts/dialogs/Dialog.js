@@ -28,28 +28,28 @@ const initializeDialogButtonEvents = () => {
               const dialogSiblingSelector = `#${theEvent.target.id}+dialog`
               const theDialog = document.querySelector(dialogSiblingSelector)
               resetEventForm()
-              theDialog.showModal()
+              theDialog.show()
           }
       )
   }
 
   eventHub.addEventListener("editEventButtonClicked", e => {
     const dialogSelector = document.querySelector(".dialog--addEvent")
-    dialogSelector.showModal()
+    dialogSelector.show()
   })
 
   eventHub.addEventListener("editNewsButtonClicked", e => {
     const dialogSelector = document.querySelector(".dialog--addArticle")
-    dialogSelector.showModal()
+    dialogSelector.show()
   })
 
   eventHub.addEventListener("editTaskButtonClicked", e => {
     const dialogSelector = document.querySelector(".dialog--addTask")
-    dialogSelector.showModal()
+    dialogSelector.show()
   })
   eventHub.addEventListener("editMessageButtonClicked", e => {
     const dialogSelector = document.querySelector(".dialog--addMessage")
-    dialogSelector.showModal()
+    dialogSelector.show()
   })
   
 }
