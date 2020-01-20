@@ -13,7 +13,6 @@ const initializeDialogButtonEvents = () => {
       theEvent => {
         const dialogElement = theEvent.target.parentNode
         dialogElement.close()
-        // resetNewsForm()
       }    
     )
   }
