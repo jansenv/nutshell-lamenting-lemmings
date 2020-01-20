@@ -39,7 +39,14 @@ const TaskList = () => {
   eventHub.addEventListener("click", e => {
     if (e.target.id.startsWith("deleteTask--")) {
       const [prefix, id] = e.target.id.split("--")
-      deleteTask(id).then(() => render(useTasks()))
+      deleteTask(id).then(() =>{
+        const newTasks = useTasks()
+        const notCompletedTaskArray = newTasks.filter(task => task.isCompleted === false)
+        const completedTaskArray = newTasks.filter(task => task.isCompleted === true)
+        const yourNotCompletedTaskArray = notCompletedTaskArray.filter(task => task.userId === parseInt(sessionStorage.getItem("activeUser"), 10))
+        notCompletedTaskRender(yourNotCompletedTaskArray)
+        completedTaskRender(yourCompletedTaskArray)
+      })
     }
   })
 
