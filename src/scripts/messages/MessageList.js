@@ -1,5 +1,9 @@
+// Authored by: Willy Metcalf
+
 import { useMessages, deleteMessage } from "./MessagesDataProvider.js"
 import { Message } from "./Message.js"
+import initializeDialogButtonEvents from "../dialogs/Dialog.js"
+
 
 
 
@@ -16,6 +20,10 @@ export const MessageList=()=>{
     const newMessages = useMessages()
     render(newMessages)
   })
+  eventHub.addEventListener("messageHasBeenEdited",e=>{
+    const newMessages = useMessages()
+    render(newMessages)
+  })
   
     eventHub.addEventListener("click", e => {
       if (e.target.id.startsWith("deleteMessage--")) {
@@ -29,7 +37,24 @@ export const MessageList=()=>{
       contentTarget.innerHTML = 
       mes.map(message => Message(message)).join("")
     }
-    render(messages)
+    eventHub.addEventListener("userLoggedIn", e => {
+      const newMessages = useMessages()
+      render(newMessages)
+    }) 
+    eventHub.addEventListener("userLoggedOut", e => {
+      contentTarget.innerHTML=""
+    }) 
+    eventHub.addEventListener("friendRemoved", e => {
+      const newMessages = useMessages()
+      render(newMessages)
+      initializeDialogButtonEvents()
+    }) 
+    eventHub.addEventListener("newFriendAdded", e => {
+      const newMessages = useMessages()
+      render(newMessages)
+      initializeDialogButtonEvents()
+
+    }) 
 
 
 }

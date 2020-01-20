@@ -2,6 +2,7 @@
 
 import { useTasks, deleteTask } from "./TaskDataProvider.js"
 import { Task } from "./Task.js"
+import initializeDialogButtonEvents from "../dialogs/Dialog.js"
 
 
 const eventHub = document.querySelector(".container")
@@ -29,7 +30,15 @@ const TaskList = () => {
     contentTarget.innerHTML = 
     eve.map(task => Task(task)).join("")
   }
-  render(tasks)
+  eventHub.addEventListener("userLoggedIn", e => {
+    render(tasks)
+    initializeDialogButtonEvents()
+  })
+  eventHub.addEventListener("userLoggedOut", e => {
+    contentTarget.innerHTML = ""
+  })  
+  // render(tasks)
+ 
 }
 
 export default TaskList

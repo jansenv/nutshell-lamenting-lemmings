@@ -1,3 +1,4 @@
+// Authored by: Willy Metcalf
 let messages = []
 
 export const useMessages = () => messages.slice()
@@ -27,7 +28,7 @@ export const getMessages = () => fetch("http://localhost:3000/messages?_expand=u
           "Content-Type": "application/json"
       },
       body: JSON.stringify(message)
-  })
+  }).then(getMessages)
 }
 export const deleteMessage = (messageId) => {
   return fetch(`http://localhost:3000/messages/${messageId}`, {

@@ -1,3 +1,5 @@
+// Authored by: Willy Metcalf
+
 let friends = []
 
 export const useFriends = () => friends.slice()
@@ -17,5 +19,11 @@ export const getFriends = () => fetch("http://localhost:3000/friends?_expand=use
               "Content-Type": "application/json"
           },
           body: JSON.stringify(friend)
-      })
+      }).then(getFriends)
     }
+    export const deleteFriend = (friendRelationship) => {
+        return fetch(`http://localhost:3000/friends/${friendRelationship.id}`, {
+            method: "DELETE"
+        })
+        .then(getFriends)
+      }

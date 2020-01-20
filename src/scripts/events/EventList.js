@@ -23,12 +23,19 @@ const EventList = () => {
     }
   })
 
+  eventHub.addEventListener("userLoggedIn", e => {
+    render(useEvents())
+  })    
+  eventHub.addEventListener("userLoggedOut", e => {
+    contentTarget.innerHTML=""
+  }) 
+
   const render = (eve) => {
     contentTarget.innerHTML = ""
     contentTarget.innerHTML = 
     eve.map(event => Event(event)).join("")
   }
-  render(events)
+  // render(events)
 }
 
 export default EventList

@@ -1,17 +1,37 @@
 import { LoginForm } from "./users/LoginForm.js";
 import { getUsers } from "./users/UsersDataProvider.js";
 import { getEvents } from "./events/EventDataProvider.js";
-import initializeAddEventsButton from "./dialogs/Dialog.js";
-import { AddEventForm } from "./events/EventForm.js";
-import EventList from "./events/EventList.js";
 import { getTasks } from "./tasks/TaskDataProvider.js";
-import { AddTaskForm } from "./tasks/TaskForm.js";
-import TaskList from "./tasks/TaskList.js";
 import { getMessages } from "./messages/MessagesDataProvider.js";
-import { MessageList } from "./messages/MessageList.js"
-import { AddMessageForm } from "./messages/MessageForm.js";
 import { getFriends } from "./friends/FriendsDataProvider.js";
-import { addFriend } from "./friends/AddFriend.js";
+import { addFriend } from "./friends/AddOrRemoveFriend.js";
+import { getNews } from "./news/NewsDataProvider.js";
+import { AddEventForm } from "./events/EventForm.js"
+import EventList from "./events/EventList.js"
+import { AddTaskForm } from "./tasks/TaskForm.js"
+import { AddMessageForm } from "./messages/MessageForm.js"
+import { AddNewsForm } from "./news/NewsForm.js"
+import { MessageList } from "./messages/MessageList.js"
+import TaskList from "./tasks/TaskList.js"
+import NewsList from "./news/NewsList.js"
+import { FriendList } from "./friends/FriendList.js"
+import { Home } from "./homeNav/home.js";
+
+
+// Renders all html for user
+const RenderAtLogin=()=>{
+  AddEventForm()
+  AddTaskForm()
+  AddMessageForm()
+  AddNewsForm()
+  EventList()
+  MessageList()
+  TaskList()
+  NewsList()
+  FriendList()
+  
+  
+  }
 
 getUsers()
 .then(LoginForm)
@@ -19,22 +39,8 @@ getUsers()
 .then(getMessages)
 .then(getTasks)
 .then(getFriends)
-.then(AddEventForm)
-.then(EventList)
-.then(AddTaskForm)
-.then(TaskList)
-.then(AddMessageForm)
-.then(MessageList)
+.then(getNews)
 .then(addFriend)
+.then(RenderAtLogin)
+.then(Home)
 
-
-
-
-
-
-
-
-
-
-
-.then(initializeAddEventsButton)
