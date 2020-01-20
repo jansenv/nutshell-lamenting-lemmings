@@ -1,5 +1,6 @@
 .otherUsersEventCard {
   background-color: cornsilk;
+  font-style: italic;
 }
 
 .eventCard:first-child {
