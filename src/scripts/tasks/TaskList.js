@@ -15,16 +15,24 @@ const TaskList = () => {
   eventHub.addEventListener("taskHasBeenEdited", e => {
     const newTasks = useTasks()
     const notCompletedTaskArray = newTasks.filter(task => task.isCompleted === false)
+
+      const yourNotCompletedTaskArray = notCompletedTaskArray.filter(task => task.userId === parseInt(sessionStorage.getItem("activeUser"), 10))
+
     const completedTaskArray = newTasks.filter(task => task.isCompleted === true)
-    notCompletedTaskRender(notCompletedTaskArray)
-    completedTaskRender(completedTaskArray)
+
+      const yourCompletedTaskArray = completedTaskArray.filter(task => task.userId === parseInt(sessionStorage.getItem("activeUser"), 10))
+
+    notCompletedTaskRender(yourNotCompletedTaskArray)
+    completedTaskRender(yourCompletedTaskArray)
     initializeDialogButtonEvents()
   })
   
   eventHub.addEventListener("newTaskSaved", e => {
     const newTasks = useTasks()
     const notCompletedTaskArray = newTasks.filter(task => task.isCompleted === false)
-    notCompletedTaskRender(notCompletedTaskArray)
+
+    const yourNotCompletedTaskArray = notCompletedTaskArray.filter(task => task.userId === parseInt(sessionStorage.getItem("activeUser"), 10))
+    notCompletedTaskRender(yourNotCompletedTaskArray)
     initializeDialogButtonEvents()
   })
 
@@ -50,9 +58,15 @@ const TaskList = () => {
   eventHub.addEventListener("userLoggedIn", e => {
     const newTasks = useTasks()
     const notCompletedTaskArray = newTasks.filter(task => task.isCompleted === false)
+
+      const yourNotCompletedTaskArray = notCompletedTaskArray.filter(task => task.userId === parseInt(sessionStorage.getItem("activeUser"), 10))
+
     const completedTaskArray = newTasks.filter(task => task.isCompleted === true)
-    notCompletedTaskRender(notCompletedTaskArray)
-    completedTaskRender(completedTaskArray)
+
+      const yourCompletedTaskArray = completedTaskArray.filter(task => task.userId === parseInt(sessionStorage.getItem("activeUser"), 10))
+
+    notCompletedTaskRender(yourNotCompletedTaskArray)
+    completedTaskRender(yourCompletedTaskArray)
     initializeDialogButtonEvents()
   })
   eventHub.addEventListener("userLoggedOut", e => {

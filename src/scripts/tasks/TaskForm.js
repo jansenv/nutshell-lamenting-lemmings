@@ -70,7 +70,7 @@ export const AddTaskForm = () => {
           window.alert("Please Fill out all Input Fields")
         } else {
         const newEvent = {
-          userId: sessionStorage.getItem("activeUser"),
+          userId: parseInt(sessionStorage.getItem("activeUser"), 10),
           name: name,
           task: task,
           dueDate: dueDate,
