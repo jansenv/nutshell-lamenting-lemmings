@@ -22,6 +22,10 @@ const NewsList = () => {
     }
   })
 
+  eventHub.addEventListener("userLoggedIn", e => {
+    render(useNews())
+  })
+
   const render = (articles) => {
     contentTarget.innerHTML = `<h2>News</h2>`
     contentTarget.innerHTML += 

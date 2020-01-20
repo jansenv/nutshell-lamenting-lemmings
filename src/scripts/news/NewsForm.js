@@ -37,7 +37,7 @@ export const AddNewsForm = () => {
             } else {
 
                 const newArticle = {
-                    userId: sessionStorage.getItem("activeUser"),
+                    userId: parseInt(sessionStorage.getItem("activeUser"), 10),
                     title: document.querySelector("#articleTitle").value,
                     url: document.querySelector("#articleURL").value,
                     synopsis: document.querySelector("#articleSynopsis").value,

@@ -10,6 +10,7 @@ import TaskList from "./tasks/TaskList.js";
 import { getNews } from "./news/NewsDataProvider.js";
 import NewsList from "./news/NewsList.js";
 import { AddNewsForm } from "./news/NewsForm.js";
+import { ads } from "./news/ads.js";
 
 
 getUsers()
@@ -25,3 +26,5 @@ getUsers()
 getNews()
 .then(AddNewsForm)
 .then(NewsList)
+
+ads()
