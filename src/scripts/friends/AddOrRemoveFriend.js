@@ -5,6 +5,20 @@ import { saveFriend, deleteFriend, useFriends } from "./FriendsDataProvider.js"
 const eventHub = document.querySelector(".container")
 
 export const addFriend=()=>{
+
+eventHub.addEventListener("click", clickEvent=>{
+  if(clickEvent.target.id.startsWith("searchAddFriend--")){
+    let [blah, userId] = clickEvent.target.id.split("--")
+
+    const newSearchFriendRelation ={
+      "userId": parseInt(userId,10),
+      "activeUserId":parseInt(sessionStorage.getItem("activeUser"),10)
+    }
+    saveFriend(newSearchFriendRelation).then(()=>{
+      eventHub.dispatchEvent(new CustomEvent("newFriendAdded"))
+    })
+  }
+})
   eventHub.addEventListener("click", clickEvent=>{
     // Add friend dialog when you click the users name in a message
     let [prefix , messageUserId] = clickEvent.target.id.split("--")

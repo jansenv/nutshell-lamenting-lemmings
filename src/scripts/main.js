@@ -16,6 +16,7 @@ import TaskList from "./tasks/TaskList.js"
 import NewsList from "./news/NewsList.js"
 import { FriendList } from "./friends/FriendList.js"
 import { Home } from "./homeNav/home.js";
+import { SearchFriendsList } from "./friends/FriendSearchList.js";
 
 
 // Renders all html for user
@@ -29,7 +30,7 @@ const RenderAtLogin=()=>{
   TaskList()
   NewsList()
   FriendList()
-  
+  SearchFriendsList()
   
   }
 
