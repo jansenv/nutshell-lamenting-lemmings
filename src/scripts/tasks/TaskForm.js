@@ -161,5 +161,11 @@ export const AddTaskForm = () => {
           </dialog>
       </div>`;
   };
-  render();
+  eventHub.addEventListener("userLoggedIn", e => {
+    render();
+  }) 
+  eventHub.addEventListener("userLoggedOut", e => {
+    contentTarget.innerHTML=""
+  })  
+  // render();
 };

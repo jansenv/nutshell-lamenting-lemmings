@@ -1,6 +1,7 @@
 import { useUsers, saveUser } from "./UsersDataProvider.js"
 
-// Collective group coding until line 70 then it wsa willy
+
+// Collective group coding until line 70 then it was willy
 // no more runescape for holden
 const eventHub = document.querySelector(".container")
 const contentTarget = document.querySelector(".login")
@@ -60,10 +61,10 @@ export const LoginForm = () => {
             }
           })
           sessionStorage.setItem("activeUser", foundUser.id)
-          console.log(sessionStorage.getItem("activeUser"))
-          contentTarget.innerHTML =""
           const message = new CustomEvent("userLoggedIn")
           eventHub.dispatchEvent(message)
+          contentTarget.innerHTML = ""
+
         }
         catch{
           window.alert("Your email or password is incorrect")
@@ -77,36 +78,40 @@ export const LoginForm = () => {
 
 
 
-eventHub.addEventListener("click", clickEvent=>{
-  if(clickEvent.target.classList.contains("save--user")){
-    const users = useUsers()
-    const email = document.querySelector("#email").value
-    const password = document.querySelector("#password").value
-    const confirmPassword = document.querySelector("#confirmPassword").value
-    const firstName = document.querySelector("#firstName").value
-    const lastName = document.querySelector("#lastName").value
- const newUserId= users.length + 1
-    if(email === "" || password ==="" || firstName==="" || lastName===""){
-      window.alert("Please Fill out all Input Fields")
-    }else if(password !== confirmPassword){
-      window.alert("Your Passwords Don't Match")
-    }else{
-       const newUser = {
-         "id": newUserId,
-      "email": email,
-      "password": password,
-      "firstName": firstName,
-      "lastName": lastName
-    }
-    saveUser(newUser).then(()=> contentTarget.innerHTML ="").then(()=>{
+  eventHub.addEventListener("click", clickEvent => {
+    if (clickEvent.target.classList.contains("save--user")) {
+      const users = useUsers()
+      const email = document.querySelector("#email").value
+      const password = document.querySelector("#password").value
+      const confirmPassword = document.querySelector("#confirmPassword").value
+      const firstName = document.querySelector("#firstName").value
+      const lastName = document.querySelector("#lastName").value
+      const newUserId = users.length + 1
+      if (email === "" || password === "" || firstName === "" || lastName === "") {
+        window.alert("Please Fill out all Input Fields")
+      } else if (password !== confirmPassword) {
+        window.alert("Your Passwords Don't Match")
+      } else {
+        const newUser = {
+          "id": newUserId,
+          "email": email,
+          "password": password,
+          "firstName": firstName,
+          "lastName": lastName
+        }
+        saveUser(newUser).then(() => contentTarget.innerHTML = "").then(() => {
 
-      sessionStorage.setItem("activeUser", newUser.id)
-console.log(sessionStorage.getItem("activeUser"))    
-})
+          sessionStorage.setItem("activeUser", newUser.id)
+          const message = new CustomEvent("userLoggedIn")
+          eventHub.dispatchEvent(message)
+          contentTarget.innerHTML = ""
+        })
+      }
     }
-  }
-})
-
+  })
+  eventHub.addEventListener("userLoggedOut", e => {
+    render()
+  })  
 
 
 
@@ -122,15 +127,16 @@ console.log(sessionStorage.getItem("activeUser"))
       <p class="welcome">Welcome!</p>
   
       <div class ="logInForm">
+      <form autocomplete="new-password">
       <div class="hidden newUserForm">
         First Name: <input id="firstName" type="text" /> <br>
         Last Name: <input id="lastName" type="text" /> <br>
       </div>
         Email: <input class="email" id="email" type="text" /><br>
-        Password: <input class="password" id ="password" type="text" autocomplete="off" />
+        Password: <input class="password" id ="password" type="password" autocomplete="off"/>
         <div class="hidden confirmPassword newUserForm">
-        Confirm Password: <input id="confirmPassword" type="text" /><br>
-        
+        Confirm Password: <input id="confirmPassword" type="password" autocomplete="off" /><br>
+        </form>
         <button class="save--user">Save New User</button>
         </div>
         <br>

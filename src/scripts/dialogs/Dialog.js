@@ -13,7 +13,7 @@ const initializeDialogButtonEvents = () => {
       theEvent => {
         const dialogElement = theEvent.target.parentNode
         dialogElement.close()
-        resetNewsForm()
+        // resetNewsForm()
       }    
     )
   }
@@ -45,6 +45,10 @@ const initializeDialogButtonEvents = () => {
 
   eventHub.addEventListener("editTaskButtonClicked", e => {
     const dialogSelector = document.querySelector(".dialog--addTask")
+    dialogSelector.showModal()
+  })
+  eventHub.addEventListener("editMessageButtonClicked", e => {
+    const dialogSelector = document.querySelector(".dialog--addMessage")
     dialogSelector.showModal()
   })
   
