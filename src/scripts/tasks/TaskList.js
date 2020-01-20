@@ -7,7 +7,7 @@ import initializeDialogButtonEvents from "../dialogs/Dialog.js"
 
 const eventHub = document.querySelector(".container")
 const contentTarget = document.querySelector(".tasksToDo")
-const contentTargetPart2 = document.querySelector(".tasksCompleted")
+const contentTargetCompletedTasks = document.querySelector(".tasksCompleted")
 
 const TaskList = () => {
   const tasks = useTasks()
@@ -39,7 +39,7 @@ const TaskList = () => {
 
 
   const completedTaskRender = (taskArray) => {
-    contentTargetPart2.innerHTML = `<h2>CompletedTasks</h2> ${taskArray.map (task => Task(task)).join("")}`
+    contentTargetCompletedTasks.innerHTML = `<h2>CompletedTasks</h2> ${taskArray.map (task => Task(task)).join("")}`
   }
 
 
@@ -57,6 +57,7 @@ const TaskList = () => {
   })
   eventHub.addEventListener("userLoggedOut", e => {
     contentTarget.innerHTML = ""
+    contentTargetCompletedTasks.innerHTML = ""
   })  
  
 }
