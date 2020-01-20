@@ -59,6 +59,8 @@ export const AddTaskForm = () => {
         };
         editTask(editedTask).then(() => {
           eventHub.dispatchEvent(new CustomEvent("taskHasBeenEdited"));
+          const dialogElement = e.target.parentNode;
+          dialogElement.close()
         });
       }
 
@@ -67,14 +69,14 @@ export const AddTaskForm = () => {
         if (name === "" || task === "" || dueDate === "" ) {
           window.alert("Please Fill out all Input Fields")
         } else {
-        const newEvent = {
+        const newTask = {
           userId: parseInt(sessionStorage.getItem("activeUser"), 10),
           name: name,
           task: task,
           dueDate: dueDate,
           isCompleted: false
         }
-        saveTask(newEvent)
+        saveTask(newTask)
           .then(getTasks)
           .then(() => {
             const message = new CustomEvent("newTaskSaved");
