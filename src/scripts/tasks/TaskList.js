@@ -2,6 +2,7 @@
 
 import { useTasks, deleteTask } from "./TaskDataProvider.js"
 import { Task } from "./Task.js"
+import initializeDialogButtonEvents from "../dialogs/Dialog.js"
 
 
 const eventHub = document.querySelector(".container")
@@ -17,12 +18,14 @@ const TaskList = () => {
     const completedTaskArray = newTasks.filter(task => task.isCompleted === true)
     notCompletedTaskRender(notCompletedTaskArray)
     completedTaskRender(completedTaskArray)
+    initializeDialogButtonEvents()
   })
   
   eventHub.addEventListener("newTaskSaved", e => {
     const newTasks = useTasks()
     const notCompletedTaskArray = newTasks.filter(task => task.isCompleted === false)
     notCompletedTaskRender(notCompletedTaskArray)
+    initializeDialogButtonEvents()
   })
 
   eventHub.addEventListener("click", e => {
@@ -34,24 +37,28 @@ const TaskList = () => {
 
 
 
-const completedTaskArray = tasks.filter(task => task.isCompleted === true)
-const notCompletedTaskArray = tasks.filter(task => task.isCompleted === false)
 
   const completedTaskRender = (taskArray) => {
     contentTargetPart2.innerHTML = `<h2>CompletedTasks</h2> ${taskArray.map (task => Task(task)).join("")}`
-
-
-
   }
-  completedTaskRender(completedTaskArray)
 
 
   const notCompletedTaskRender = (taskArray) => {
     contentTarget.innerHTML = `<h2>To Do List:</h2> ${taskArray.map (task => Task(task)).join("")}`
-
-
   }
-  notCompletedTaskRender(notCompletedTaskArray)
+
+  eventHub.addEventListener("userLoggedIn", e => {
+    const newTasks = useTasks()
+    const notCompletedTaskArray = newTasks.filter(task => task.isCompleted === false)
+    const completedTaskArray = newTasks.filter(task => task.isCompleted === true)
+    notCompletedTaskRender(notCompletedTaskArray)
+    completedTaskRender(completedTaskArray)
+    initializeDialogButtonEvents()
+  })
+  eventHub.addEventListener("userLoggedOut", e => {
+    contentTarget.innerHTML = ""
+  })  
+ 
 }
 
 
