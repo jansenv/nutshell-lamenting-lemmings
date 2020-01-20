@@ -52,7 +52,7 @@ export const AddEventForm = () => {
       const [prefix, id] = e.target.id.split("--")
 
       const allEvents = useEvents()
-  
+   
       const theFoundEvent = allEvents.find(
         (eventObj) => {
           return eventObj.id === parseInt(id, 10)
@@ -66,7 +66,12 @@ export const AddEventForm = () => {
       const message = new CustomEvent("editEventButtonClicked")
       eventHub.dispatchEvent(message)
     }})
-
+    eventHub.addEventListener("userLoggedIn", e => {
+      render()
+    }) 
+    eventHub.addEventListener("userLoggedOut", e => {
+      contentTarget.innerHTML=""
+    }) 
 
     const render = () => {
     contentTarget.innerHTML =   
@@ -93,5 +98,5 @@ export const AddEventForm = () => {
           </dialog>
       </div>`
     }
-    render()
+    // render()
 }

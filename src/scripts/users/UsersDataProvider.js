@@ -1,3 +1,5 @@
+// Authored by: Willy Metcalf
+
 let users = []
 
 export const useUsers = () => users.slice()

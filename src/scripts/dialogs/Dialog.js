@@ -13,6 +13,7 @@ const initializeDialogButtonEvents = () => {
       theEvent => {
         const dialogElement = theEvent.target.parentNode
         dialogElement.close()
+        // resetNewsForm()
       }    
     )
   }
@@ -28,24 +29,28 @@ const initializeDialogButtonEvents = () => {
               const theDialog = document.querySelector(dialogSiblingSelector)
               resetEventForm()
               resetNewsForm()
-              theDialog.showModal()
+              theDialog.show()
           }
       )
   }
 
   eventHub.addEventListener("editEventButtonClicked", e => {
     const dialogSelector = document.querySelector(".dialog--addEvent")
-    dialogSelector.showModal()
+    dialogSelector.show()
   })
 
   eventHub.addEventListener("editNewsButtonClicked", e => {
     const dialogSelector = document.querySelector(".dialog--addArticle")
-    dialogSelector.showModal()
+    dialogSelector.show()
   })
 
   eventHub.addEventListener("editTaskButtonClicked", e => {
     const dialogSelector = document.querySelector(".dialog--addTask")
-    dialogSelector.showModal()
+    dialogSelector.show()
+  })
+  eventHub.addEventListener("editMessageButtonClicked", e => {
+    const dialogSelector = document.querySelector(".dialog--addMessage")
+    dialogSelector.show()
   })
   
 }
