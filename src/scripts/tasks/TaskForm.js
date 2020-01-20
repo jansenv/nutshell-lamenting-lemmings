@@ -23,7 +23,9 @@ export const AddTaskForm = () => {
             "id": parseInt(selectedCheckboxId, 10),
             "isCompleted": isCompleted
         }
-         patchTask(editedCheckboxTask)   
+         patchTask(editedCheckboxTask).then(() => {
+          eventHub.dispatchEvent(new CustomEvent("taskHasBeenEdited"))
+        }) 
         } 
         
 

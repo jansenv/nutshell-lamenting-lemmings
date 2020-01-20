@@ -5,17 +5,24 @@ import { Task } from "./Task.js"
 
 
 const eventHub = document.querySelector(".container")
-const contentTarget = document.querySelector(".tasks")
+const contentTarget = document.querySelector(".tasksToDo")
+const contentTargetPart2 = document.querySelector(".tasksCompleted")
 
 const TaskList = () => {
   const tasks = useTasks()
 
   eventHub.addEventListener("taskHasBeenEdited", e => {
-    render(useTasks())
+    const newTasks = useTasks()
+    const notCompletedTaskArray = newTasks.filter(task => task.isCompleted === false)
+    const completedTaskArray = newTasks.filter(task => task.isCompleted === true)
+    notCompletedTaskRender(notCompletedTaskArray)
+    completedTaskRender(completedTaskArray)
   })
   
   eventHub.addEventListener("newTaskSaved", e => {
-    render(useTasks())
+    const newTasks = useTasks()
+    const notCompletedTaskArray = newTasks.filter(task => task.isCompleted === false)
+    notCompletedTaskRender(notCompletedTaskArray)
   })
 
   eventHub.addEventListener("click", e => {
@@ -25,11 +32,29 @@ const TaskList = () => {
     }
   })
 
-  const render = (eve) => {
-    contentTarget.innerHTML = 
-    eve.map(task => Task(task)).join("")
+
+
+const completedTaskArray = tasks.filter(task => task.isCompleted === true)
+const notCompletedTaskArray = tasks.filter(task => task.isCompleted === false)
+
+  const completedTaskRender = (taskArray) => {
+    contentTargetPart2.innerHTML = `<h2>CompletedTasks</h2> ${taskArray.map (task => Task(task)).join("")}`
+
+
+
   }
-  render(tasks)
+  completedTaskRender(completedTaskArray)
+
+
+  const notCompletedTaskRender = (taskArray) => {
+    contentTarget.innerHTML = `<h2>To Do List:</h2> ${taskArray.map (task => Task(task)).join("")}`
+
+
+  }
+  notCompletedTaskRender(notCompletedTaskArray)
 }
 
+
+
 export default TaskList
+
