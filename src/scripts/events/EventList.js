@@ -30,6 +30,14 @@ const EventList = () => {
     contentTarget.innerHTML=""
   }) 
 
+  eventHub.addEventListener("newFriendAdded", e => {
+    render(useEvents())
+  })
+
+  eventHub.addEventListener("friendRemoved", e => {
+    render(useEvents())
+  })
+
   const render = (eve) => {
     contentTarget.innerHTML = ""
     contentTarget.innerHTML = 

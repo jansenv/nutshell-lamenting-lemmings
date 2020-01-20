@@ -1,4 +1,6 @@
 // Authored by: Holden Parker
+import { useFriends } from "../friends/FriendsDataProvider.js"
+
 const eventHub = document.querySelector(".container")
 
 export const Event = (event) => {
@@ -20,26 +22,49 @@ export const Event = (event) => {
     }
   }
 
-  const editDeleteButton = () => {
-    let button = ""
-    if(event.userId === parseInt(sessionStorage.getItem("activeUser")))
-    {
-      button = `<div id="edit--${event.userId}">
-      <button class="button--edit" id="editEvent--${event.id}">Edit</button>
-      <button class="button--delete" id="deleteEvent--${event.id}">Delete</button>
-    </div>`
-    }
-    return button
+  const FriendChecker = (friends) => {
+    const foundFriends = friends.filter(relat => {
+      if (relat.activeUserId === parseInt(sessionStorage.getItem("activeUser"))) {
+        return relat
+      }
+    })
 
+    let shouldIRender = false
+    let createdByMe = false
+
+    if (event.userId === parseInt(sessionStorage.getItem("activeUser"))) {
+      shouldIRender = true
+      createdByMe = true
+    }
+
+    foundFriends.forEach(element => {
+      if (element.user.id === event.userId) {
+        shouldIRender = true
+      }
+    });
+
+    if (shouldIRender && createdByMe) {
+      return `<section class="eventCard">
+          <h3>Event: ${event.name}</h3>
+          <div>When: ${new Date(event.timestamp).toLocaleDateString('en-US') + " " + timeFormat(event.timestamp)}</div>
+          <div>Location: ${event.location}</div>
+          <div>Posted by: ${event.user.firstName} ${event.user.lastName}</div>
+          <div id="edit--${event.userId}">
+          <button class="button--edit" id="editEvent--${event.id}">Edit</button>
+          <button class="button--delete" id="deleteEvent--${event.id}">Delete</button>
+          </div>
+      </section>`
+    }
+
+    if (shouldIRender) {
+      return `<section class="eventCard otherUsersEventCard">
+          <h3>Event: ${event.name}</h3>
+          <div>When: ${new Date(event.timestamp).toLocaleDateString('en-US') + " " + timeFormat(event.timestamp)}</div>
+          <div>Location: ${event.location}</div>
+          <div>Posted by: ${event.user.firstName} ${event.user.lastName}</div>
+      </section>`
+    }
   }
-  
-  return `
-  <section>
-  <h3>Event: ${event.name}</h3>
-  <div>When: ${new Date(event.timestamp).toLocaleDateString('en-US') + " " + timeFormat(event.timestamp)}</div>
-  <div>Location: ${event.location}</div>
-  <div>Posted by: ${event.user.firstName} ${event.user.lastName}</div>
-  ${editDeleteButton()}
-  </section>`
+  return FriendChecker(useFriends())
 }
- 
+
