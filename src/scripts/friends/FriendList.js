@@ -1,5 +1,6 @@
 import { useFriends } from "./FriendsDataProvider.js"
 import { Friend } from "./Friend.js"
+import initializeDialogButtonEvents from "../dialogs/Dialog.js"
 
 // Authored by: Willy Metcalf
 
@@ -28,6 +29,7 @@ const friendsArray = useFriends()
     let usersFriendsArray = friendsArray.filter(user=> user.activeUserId === parseInt(sessionStorage.getItem("activeUser")))
 
     render(usersFriendsArray)
+    initializeDialogButtonEvents()
  
   }) 
   eventHub.addEventListener("userLoggedOut", e => {

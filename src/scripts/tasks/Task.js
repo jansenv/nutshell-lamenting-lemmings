@@ -1,6 +1,7 @@
 // Coded by Spencer Truett
 
 const Checkbox=(task)=>{
+
   if(task.isCompleted===true){
      return `
   <input type="checkbox" name="completedCheckbox" value="${task.isCompleted}" class="isCompletedCheckbox" id="taskCompleted--${task.id}" checked>Completed?<br>
@@ -15,12 +16,30 @@ else{
   
 }
 export const Task = (task) => {
+
+  const timeFormat = (dateTimePicked) => {
+    const [date, militaryTime] = dateTimePicked.split("T")
+    let [hours, minutes] = militaryTime.split(":")
+    if (hours >= 13) {
+      return `${(hours - 12)}:${minutes} PM`
+    } else if (hours === '12') {
+      return `${hours}:${minutes} PM`
+    } else if (hours < 12 && hours > 9) {
+      return `${hours}:${minutes} AM`
+    } else if (hours <= 9 && hours > 0) {
+      const [zero, currentHour] = hours.split("")
+      return `${currentHour}:${minutes} AM`
+    } else if (hours === '00') {
+      return `${hours = 12}:${minutes} AM`
+    }
+  }
+
   return `
   <section>
   <div class="taskFields">
     <h3>Task: ${task.name}</h3>
     <div>Task Description: ${task.task}</div>
-    <div>Expected Completion Date: ${task.dueDate}</div>
+    <div>Expected Completion Date: ${new Date(task.dueDate).toLocaleDateString('en-US') + " " + timeFormat(task.dueDate)}</div>
   </div>
   <div>
   ${Checkbox(task)}

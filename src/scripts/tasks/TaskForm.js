@@ -15,21 +15,17 @@ export const AddTaskForm = () => {
             const checkboxes = document.querySelectorAll(".isCompletedCheckbox")
             for (const checkbox of checkboxes) { 
             if (checkbox.id === `taskCompleted--${selectedCheckboxId}`){
-                isCompleted = checkbox.checked
-                // if(checkbox.checked === false){
-                //     isCompleted = false
-                // }else{
-                //     isCompleted = true
-                // }
-               
+                isCompleted = checkbox.checked          
             }
         }  
 
         const editedCheckboxTask = {
-            "id": parseInt(selectedCheckboxId,10),
+            "id": parseInt(selectedCheckboxId, 10),
             "isCompleted": isCompleted
         }
-         patchTask(editedCheckboxTask)   
+         patchTask(editedCheckboxTask).then(() => {
+          eventHub.dispatchEvent(new CustomEvent("taskHasBeenEdited"))
+        }) 
         } 
         
 
@@ -113,24 +109,6 @@ export const AddTaskForm = () => {
       eventHub.dispatchEvent(message);
     }
   });
-
-// // This here is the line of code for the checkbox that I undoubtedly will not finish before I go to bed, but this it my initial attempt
-//     eventHub.addEventListener("click", e => {
-//     if (e.target.id.startsWith("taskCompleted--")) {
-//       const [prefix, id] = e.target.id.split("--");
-
-//       const allTasks = useTasks();  
-
-//       const theFoundTask = allTasks.find(taskObj => {
-//         return taskObj.id === parseInt(id, 10);
-//       });
-
-//       document.getElementById("taskCompleted").value = theFoundTask.completed;
-
-//       const message = new CustomEvent("completedButtonClicked");
-//       eventHub.dispatchEvent(message);
-//     }
-//   });
 
   const render = () => {
     contentTarget.innerHTML = `<div class="addTask">
