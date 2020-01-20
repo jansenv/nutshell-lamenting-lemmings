@@ -1,5 +1,6 @@
 import { resetNewsForm } from "../news/NewsForm.js"
 import { resetEventForm } from "../events/EventForm.js"
+import { resetTaskForm } from "../tasks/TaskForm.js"
 
 // Authored by: Holden Parker
 const eventHub = document.querySelector(".container")
@@ -28,7 +29,9 @@ const initializeDialogButtonEvents = () => {
               const dialogSiblingSelector = `#${theEvent.target.id}+dialog`
               const theDialog = document.querySelector(dialogSiblingSelector)
               resetEventForm()
+              resetTaskForm()
               theDialog.show()
+              
           }
       )
   }

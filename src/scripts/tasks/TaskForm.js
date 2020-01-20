@@ -5,6 +5,12 @@ import { getTasks, saveTask, useTasks, editTask, patchTask } from "./TaskDataPro
 const eventHub = document.querySelector(".container");
 const contentTarget = document.querySelector(".addTaskButton");
 
+export const resetTaskForm = () => {
+  document.querySelector("#taskName").value = "";
+  document.querySelector("#taskText").value = "";
+  document.querySelector("#taskDate").value = "";
+};
+
 export const AddTaskForm = () => {
   eventHub.addEventListener("click", e => {
             
@@ -56,14 +62,6 @@ export const AddTaskForm = () => {
         });
       }
 
-        const resetTaskForm = () => {
-          document.querySelector("#taskName").value = "";
-          document.querySelector("#taskText").value = "";
-          document.querySelector("#taskDate").value = "";
-        };
-
-        resetTaskForm();
-
         document.querySelector("#taskId").value = "";
       } else {
         if (name === "" || task === "" || dueDate === "" ) {
@@ -86,14 +84,6 @@ export const AddTaskForm = () => {
           dialogElement.close()
           resetTaskForm();
       };
-
-
-        const resetTaskForm = () => {
-          document.querySelector("#taskName").value = "";
-          document.querySelector("#taskText").value = "";
-          document.querySelector("#taskDate").value = "";
-        };
-
 
       }
     }

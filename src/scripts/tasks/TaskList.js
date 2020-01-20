@@ -44,6 +44,7 @@ const TaskList = () => {
         const notCompletedTaskArray = newTasks.filter(task => task.isCompleted === false)
         const completedTaskArray = newTasks.filter(task => task.isCompleted === true)
         const yourNotCompletedTaskArray = notCompletedTaskArray.filter(task => task.userId === parseInt(sessionStorage.getItem("activeUser"), 10))
+        const yourCompletedTaskArray = completedTaskArray.filter(task => task.userId === parseInt(sessionStorage.getItem("activeUser"), 10))
         notCompletedTaskRender(yourNotCompletedTaskArray)
         completedTaskRender(yourCompletedTaskArray)
       })
