@@ -1,7 +1,7 @@
 // Authored by: Willy Metcalf
 let messages = []
 
-export const useMessages = () => messages.slice()
+export const useMessages = () => messages.slice().reverse()
 
 export const getMessages = () => fetch("http://localhost:3000/messages?_expand=user")
     .then(res => res.json())
@@ -17,7 +17,7 @@ export const getMessages = () => fetch("http://localhost:3000/messages?_expand=u
             "Content-Type": "application/json"
         },
         body: JSON.stringify(message)
-    })
+    }).then(getMessages)
   }
 
   export const editMessage = message =>{

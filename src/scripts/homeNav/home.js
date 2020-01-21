@@ -1,3 +1,5 @@
+// Authored by: Willy Metcalf
+
 import { useUsers } from "../users/UsersDataProvider.js"
 
 const eventHub = document.querySelector(".container")
