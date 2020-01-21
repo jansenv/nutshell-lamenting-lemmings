@@ -22,6 +22,7 @@ const friendsArray = useFriends()
     contentTarget.innerHTML = `
     <h2 id="friendsTitle">Friends List!</h2>
     <input placeholder="search" type="text" class="friendSearch" />
+   
     ${friends.map(fri=>Friend(fri)).join("")}
     `
   }
