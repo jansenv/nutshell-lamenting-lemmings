@@ -41,4 +41,3 @@ getUsers()
 .then(addFriend)
 .then(RenderAtLogin)
 .then(Home)
-
