@@ -14,7 +14,6 @@ const initializeDialogButtonEvents = () => {
       theEvent => {
         const dialogElement = theEvent.target.parentNode
         dialogElement.close()
-        // resetNewsForm()
       }    
     )
   }
@@ -30,6 +29,8 @@ const initializeDialogButtonEvents = () => {
               const theDialog = document.querySelector(dialogSiblingSelector)
               resetEventForm()
               resetTaskForm()
+              resetNewsForm()
+
               theDialog.show()
               
           }

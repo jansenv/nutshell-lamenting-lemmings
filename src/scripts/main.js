@@ -29,8 +29,6 @@ const RenderAtLogin=()=>{
   TaskList()
   NewsList()
   FriendList()
-  
-  
   }
 
 getUsers()

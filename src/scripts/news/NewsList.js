@@ -23,6 +23,18 @@ const NewsList = () => {
     }
   })
 
+  eventHub.addEventListener("userLoggedIn", e => {
+    render(useNews())
+  })
+
+  eventHub.addEventListener("newFriendAdded", e => {
+    render(useNews())
+  })
+
+  eventHub.addEventListener("friendRemoved", e => {
+    render(useNews())
+  })
+
   const render = (articles) => {
     contentTarget.innerHTML = `<h2>News</h2>`
     contentTarget.innerHTML += 

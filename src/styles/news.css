@@ -1,0 +1,10 @@
+.otherUserNewsCard {
+    background-color: cornsilk;
+    font-style: italic;
+}
+  
+.newsCard:first-child {
+    background-color: goldenrod;
+    font-size: 1.5em;
+    font-weight: bold;
+}
