@@ -1,10 +1,14 @@
-.otherUserNewsCard {
-    background-color: cornsilk;
-    font-style: italic;
+.newsCard {
+  background-color: rgb(255, 255, 255, 0.75);
+  border-radius: 10px;
+  padding: 2.5px 20px 20px 20px;
+  margin: 25px;
 }
-  
-.newsCard:first-child {
-    background-color: goldenrod;
-    font-size: 1.5em;
-    font-weight: bold;
+
+.otherUserNewsCard {
+    background-color: rgb(255, 248, 200, 0.75);
+    font-style: italic;
+    border-radius: 10px;
+    padding: 2.5px 20px 20px 20px;
+    margin: 25px;
 }

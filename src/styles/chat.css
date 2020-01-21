@@ -1,0 +1,10 @@
+.chat {
+    color: white;
+}
+
+.card {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 12px;
+    margin-top: 10px;
+    padding: 10px;
+}

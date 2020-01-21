@@ -1,0 +1,6 @@
+.dialog--addArticle, .dialog--addEvent, .dialog--addTask, .dialog--addMessage, .friendSearchResults {
+    position: center;
+    /* top: 50%;
+    left: 25%;
+    transform: translate(-50%, -50%); */
+}

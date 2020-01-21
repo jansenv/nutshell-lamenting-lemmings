@@ -21,9 +21,11 @@ const friendsArray = useFriends()
   const render = (friends)=>{
     contentTarget.innerHTML = `
     <h2 id="friendsTitle">Friends List!</h2>
-    <input placeholder="search" type="text" class="friendSearch" />
+    <div class="friendBox">
+    <input placeholder="Search" type="text" class="friendSearch" />
    
     ${friends.map(fri=>Friend(fri)).join("")}
+    </div>
     `
   }
   eventHub.addEventListener("userLoggedIn", e => {

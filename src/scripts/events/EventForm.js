@@ -87,14 +87,15 @@ export const AddEventForm = () => {
     const render = () => {
     contentTarget.innerHTML =   
       `<div class="addEvent">
-          <button id="button--addEvent">Add Event</button>
-
+          <div class="sectionHeader">Events
+          <button class="sectionHeaderButton" id="button--addEvent">Add Event</button>
+          
           <dialog class="dialog--addEvent">
-            <label class="dialogTitles">Add a New Event!</label>
-            <button class="button--close">X</button>
-            <hr>
-              <div>
-                <input type="hidden" id="event-id" />
+          <label class="dialogTitles">Add a New Event!</label>
+          <button class="button--close">X</button>
+          <hr>
+          <div>
+          <input type="hidden" id="event-id" />
                 <label for="eventNameText">Name of Event:</label>
                 <input id="eventNameText" type="text" />
                 <br>
@@ -104,10 +105,11 @@ export const AddEventForm = () => {
                 <label for="eventDate">Event Date and Time:</label>
                 <input type="datetime-local" id="eventDate">
                 <br>
-              </div>
-              <button class="button--save button--close" id="saveEventButton">Save</button>         
-          </dialog>
-      </div>`
+                </div>
+                <button class="button--save button--close" id="saveEventButton">Save</button>         
+                </dialog>
+                </div>
+                </div>`
     }
     // render()
 }

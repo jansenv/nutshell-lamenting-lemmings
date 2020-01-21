@@ -81,27 +81,29 @@ export const AddNewsForm = () => {
 
         contentTarget.innerHTML =
             `<div class="addArticle">
-            <button id="button--addArticle">Add Article</button>
-        
+            <div class="sectionHeader">News
+            <button class="sectionHeaderButton" id="button--addArticle">Add Article</button>
+            
             <dialog class="dialog--addArticle">
             <label class="dialogTitles">Add a New Article!</label>
             <button class="button--close">X</button>
             <hr>
             
             <div>
-                <input type="hidden" id="news-id" />
-                <label for="articleTitle">Title:</label>
-                <input id="articleTitle" type="text" />
-                <br>
-                <label for="articleURL">URL:</label>
+            <input type="hidden" id="news-id" />
+            <label for="articleTitle">Title:</label>
+            <input id="articleTitle" type="text" />
+            <br>
+            <label for="articleURL">URL:</label>
                 <input id="articleURL" type="text" />
                 <br>
                 <label for="articleSynopsis">Description:</label>
                 <input type="text" id="articleSynopsis">
                 <br>
-            </div>
-            <button class="button--save button--close" id="saveArticleButton">Save</button>         
-            </dialog>
+                </div>
+                <button class="button--save button--close" id="saveArticleButton">Save</button>         
+                </dialog>
+                </div>
         </div>`
     }
     eventHub.addEventListener("userLoggedIn", e => {
