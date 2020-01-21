@@ -15,6 +15,8 @@ eventHub.addEventListener("click", clickEvent=>{
       "activeUserId":parseInt(sessionStorage.getItem("activeUser"),10)
     }
     saveFriend(newSearchFriendRelation).then(()=>{
+      const dialogElement = clickEvent.target.parentNode
+        dialogElement.close()
       eventHub.dispatchEvent(new CustomEvent("newFriendAdded"))
     })
   }
@@ -43,6 +45,7 @@ eventHub.addEventListener("click", clickEvent=>{
           return true
         }
       })
+      console.log("FF", foundFriend)
       deleteFriend(foundFriend).then(()=>{
         eventHub.dispatchEvent(new CustomEvent("friendRemoved"))
       })

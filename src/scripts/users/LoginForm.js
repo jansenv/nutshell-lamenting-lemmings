@@ -6,6 +6,23 @@ import { useUsers, saveUser } from "./UsersDataProvider.js"
 const eventHub = document.querySelector(".container")
 const contentTarget = document.querySelector(".login")
 
+const addCSSClassToNETBlocks=()=>{
+const NETBLOCKS = document.querySelectorAll(".things")
+for (const iterator of NETBLOCKS) {
+  iterator.classList.add("Block")
+}
+}
+const removeCSSClassToNETBlocks=()=>{
+const NETBLOCKS = document.querySelectorAll(".things")
+for (const iterator of NETBLOCKS) {
+  iterator.classList.remove("Block")
+}
+}
+
+
+
+
+
 const hide = () => {
   const hiddenFields = document.querySelectorAll(".newUserForm")
   const logInButton = document.querySelector(".logIn")
@@ -87,11 +104,30 @@ export const LoginForm = () => {
       const firstName = document.querySelector("#firstName").value
       const lastName = document.querySelector("#lastName").value
       const newUserId = users.length + 1
+
+      let emailcheck = ""
+
+      try{
+        for (const user of users) {
+          if(email === user.email){
+            emailcheck = true
+          }
+        }
+      }
+      catch{
+        emailcheck = false
+      }
+
+
+
       if (email === "" || password === "" || firstName === "" || lastName === "") {
         window.alert("Please Fill out all Input Fields")
       } else if (password !== confirmPassword) {
         window.alert("Your Passwords Don't Match")
-      } else {
+      }else if(emailcheck === true){
+        window.alert("That Email is already In use!")
+      } 
+      else {
         const newUser = {
           "id": newUserId,
           "email": email,
@@ -101,6 +137,7 @@ export const LoginForm = () => {
         }
         saveUser(newUser).then(() => contentTarget.innerHTML = "").then(() => {
 
+          addCSSClassToNETBlocks()
           sessionStorage.setItem("activeUser", newUser.id)
           const message = new CustomEvent("userLoggedIn")
           eventHub.dispatchEvent(message)
@@ -110,6 +147,7 @@ export const LoginForm = () => {
     }
   })
   eventHub.addEventListener("userLoggedOut", e => {
+    removeCSSClassToNETBlocks()
     render()
   })  
 
@@ -124,10 +162,10 @@ export const LoginForm = () => {
       <a class="logInLink" href="#">Log In</a>  <a class="CreateNewUserLink" href="#">Create New User</a>
     </div>
     <div class = "FormContainer">
-      <p class="welcome">Welcome!</p>
+      <img class="logo" src="imgs/Parkour Playas.png"></br>
   
-      <div class ="logInForm">
-      <form autocomplete="new-password">
+      <div class="log">
+      <form class="logInForm"autocomplete="new-password">
       <div class="hidden newUserForm">
         First Name: <input id="firstName" type="text" /> <br>
         Last Name: <input id="lastName" type="text" /> <br>

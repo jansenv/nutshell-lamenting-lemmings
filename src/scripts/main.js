@@ -17,6 +17,8 @@ import NewsList from "./news/NewsList.js"
 import { FriendList } from "./friends/FriendList.js"
 import { Home } from "./homeNav/home.js";
 import { SearchFriendsList } from "./friends/FriendSearchList.js";
+import { getAds } from "./ads/adsDataProvider.js";
+import { Ad } from "./ads/ad.js";
 
 
 // Renders all html for user
@@ -31,7 +33,7 @@ const RenderAtLogin=()=>{
   NewsList()
   FriendList()
   SearchFriendsList()
-  
+  Ad()
   }
 
 getUsers()
@@ -41,6 +43,7 @@ getUsers()
 .then(getTasks)
 .then(getFriends)
 .then(getNews)
+.then(getAds)
 .then(addFriend)
 .then(RenderAtLogin)
 .then(Home)

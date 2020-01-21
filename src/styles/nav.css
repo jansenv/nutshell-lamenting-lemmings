@@ -1,3 +1,10 @@
 .navigation {
     text-align: center;
+    font-size: 24px;
+    color: white;
+}
+.welcomeMessage{
+    font-size: 24px;
+    
+    color: white;
 }

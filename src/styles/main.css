@@ -5,7 +5,6 @@
 @import 'tasks.css';
 @import 'chat.css';
 @import 'sectionHeaders.css';
-@import 'messages.css';
 @import 'dialog.css';
 @import 'friendList.css';
 
@@ -25,11 +24,6 @@ body {
   font-size: 18px;
 }
 
-.redX {
-  float: right;
-  background-color: #f44336;
-  border-radius: 8px;
-}
 .flexboxplaceholder{
   display: flex;
   flex-direction: column;
@@ -65,12 +59,26 @@ body {
   transition: 0.3s;
 }
 
-/* On mouse-over, add a deeper shadow */
-.card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-}
 
-/* Add some padding inside the card container */
-/* .container {
-  padding: 2px 16px;
-} */
+.ADS{
+  margin-top: 25px;
+}
+.welcomeMessage{
+  font-size: 36px;
+}
+.Block{
+  background-color: rgb(0, 0, 0, .4);
+  padding-bottom: 25px;
+  border-radius: 15px;
+  margin-bottom: 25px;
+  }
+.AdImage{
+  max-width: 100%;
+}
+.logo{
+  border-radius: 50%;
+  margin: 0 auto;
+  max-height: 25%;
+  max-width: 25%;
+  margin-bottom: 10px;
+}
