@@ -1,0 +1,18 @@
+.tasks {
+    background-color: rgb(255, 248, 200, 0.75);
+    font-style: italic;
+    border-radius: 10px;
+}
+
+/* 
+.tasksCompleted {
+    background-color: rgb(255, 248, 200, 0.75);
+    font-style: italic;
+    border-radius: 10px;
+}
+
+.tasksToDo {
+    background-color: rgb(255, 248, 200, 0.75);
+    font-style: italic;
+    border-radius: 10px;
+} */

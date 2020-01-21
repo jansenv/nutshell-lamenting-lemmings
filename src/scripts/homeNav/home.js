@@ -18,7 +18,7 @@ export const Home =()=>{
   })
   const render = (user)=>{
     contentTarget.innerHTML = `
-    HELLO ${user.firstName} ${user.lastName}!
+    <p class="welcomeMessage">HELLO ${user.firstName} ${user.lastName}!</p>
   <a href="#" class="logOut" id="logOut">Log Out</a>
     `
   }

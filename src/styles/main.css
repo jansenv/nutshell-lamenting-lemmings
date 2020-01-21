@@ -1,11 +1,18 @@
 @import 'log-in.css';
-@import 'events.css';
 @import 'news.css';
+@import 'events.css';
+@import 'tasks.css';
 @import 'chat.css';
 
 body {
   background-image: url(../imgs/wallpaper-1.jpg);
   background-size: cover;
+}
+
+.logOut {
+  float: right;
+  font-family: cursive;
+  font-size: 18px;
 }
 
 .redX {
@@ -15,7 +22,19 @@ body {
 }
 .flexboxplaceholder{
   display: flex;
+  flex-direction: column;
 }
+
+.welcomeMessage {
+  font-size: x-large;
+  font-family: cursive;
+  text-align: center;
+}
+
+.flexDiv {
+  display: flex;
+}
+
 .social{
   flex-basis: 25%;
   float: right;
