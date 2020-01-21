@@ -1,6 +1,12 @@
 @import 'log-in.css';
 @import 'events.css';
 @import 'news.css';
+@import 'chat.css';
+
+body {
+  background-image: url(../imgs/wallpaper.jpg);
+  background-size: cover;
+}
 
 .redX {
   float: right;

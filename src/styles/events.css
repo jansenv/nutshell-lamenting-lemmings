@@ -1,10 +1,10 @@
 .otherUsersEventCard {
-  background-color: cornsilk;
+  background-color: rgb(255, 248, 200, 0.5);
   font-style: italic;
 }
 
 .eventCard:first-child {
-  background-color: goldenrod;
+  background-color: rgb(218, 165, 32, 0.75);
   font-size: 1.5em;
   font-weight: bold;
 }

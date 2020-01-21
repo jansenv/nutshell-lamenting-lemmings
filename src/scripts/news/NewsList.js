@@ -2,6 +2,8 @@ import { NewsArticle } from "./NewsComponent.js"
 import { useNews, deleteNews } from "./NewsDataProvider.js"
 import { useTasks } from "../tasks/TaskDataProvider.js"
 
+// Authored by: Jansen van der Spuy
+
 const eventHub = document.querySelector(".container")
 const contentTarget = document.querySelector(".news")
 
@@ -36,18 +38,19 @@ const NewsList = () => {
   })
 
   const render = (articles) => {
-    contentTarget.innerHTML = `<h2>News</h2>`
+    contentTarget.innerHTML = ""
     contentTarget.innerHTML += 
     articles.map(news => NewsArticle(news)).join("")
   }
+  
   eventHub.addEventListener("userLoggedIn", e => {
     const news = useNews()
     render(news)
   }) 
+
   eventHub.addEventListener("userLoggedOut", e => {
     contentTarget.innerHTML=""
   })  
-  // render(news)
 
 }
 
