@@ -11,9 +11,10 @@ const contentTarget = document.querySelector(".ADS")
 
 export const Ad = ()=>{
   eventHub.addEventListener("click", e=>{
-    if(e.target.classList.contains("friendbox")){
+    if(e.target.classList.contains("AdImage")){
 const adArray = useAds()
 let randomNumber = Math.floor(Math.random() * 3) + 1;
+
 console.log("adNumber", randomNumber)
 
 let selectedAd = adArray.find(AD=>AD.id === randomNumber)
