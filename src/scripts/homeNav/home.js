@@ -19,7 +19,11 @@ export const Home =()=>{
   const render = (user)=>{
     contentTarget.innerHTML = `
     HELLO ${user.firstName} ${user.lastName}!
-  <a href="#" class="logOut" id="logOut">Log Out</a>
+    <div>Jump to:</div>
+    <a href="#news" class="logOut" id="newsJump">News</a>
+    <a href="#events" class="logOut" id="eventsJump">Events</a>
+    <a href="#tasks" class="logOut" id="tasksJump">Your Tasks</a>
+    <a href="#" class="logOut" id="logOut">Log Out</a>
     `
   }
 
