@@ -40,7 +40,7 @@ export const AddTaskForm = () => {
       const name = document.querySelector("#taskName").value
       const task = document.querySelector("#taskText").value
       const dueDate = document.querySelector("#taskDate").value
-      const isCompleted =document.querySelector("#checkbox").value
+      const isCompleted =document.querySelector("#checkbox").checked
         
         let hiddenInputValue = document.querySelector("#taskId").value
         
