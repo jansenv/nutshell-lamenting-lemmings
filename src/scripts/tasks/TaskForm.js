@@ -5,6 +5,12 @@ import { getTasks, saveTask, useTasks, editTask, patchTask } from "./TaskDataPro
 const eventHub = document.querySelector(".container");
 const contentTarget = document.querySelector(".addTaskButton");
 
+export const resetTaskForm = () => {
+  document.querySelector("#taskName").value = "";
+  document.querySelector("#taskText").value = "";
+  document.querySelector("#taskDate").value = "";
+};
+
 export const AddTaskForm = () => {
   eventHub.addEventListener("click", e => {
             
@@ -34,7 +40,7 @@ export const AddTaskForm = () => {
       const name = document.querySelector("#taskName").value
       const task = document.querySelector("#taskText").value
       const dueDate = document.querySelector("#taskDate").value
-      const isCompleted =document.querySelector("#checkbox").value
+      const isCompleted =document.querySelector("#checkbox").checked
         
         let hiddenInputValue = document.querySelector("#taskId").value
         
@@ -53,30 +59,24 @@ export const AddTaskForm = () => {
         };
         editTask(editedTask).then(() => {
           eventHub.dispatchEvent(new CustomEvent("taskHasBeenEdited"));
+          const dialogElement = e.target.parentNode;
+          dialogElement.close()
         });
       }
-
-        const resetTaskForm = () => {
-          document.querySelector("#taskName").value = "";
-          document.querySelector("#taskText").value = "";
-          document.querySelector("#taskDate").value = "";
-        };
-
-        resetTaskForm();
 
         document.querySelector("#taskId").value = "";
       } else {
         if (name === "" || task === "" || dueDate === "" ) {
           window.alert("Please Fill out all Input Fields")
         } else {
-        const newEvent = {
-          userId: sessionStorage.getItem("activeUser"),
+        const newTask = {
+          userId: parseInt(sessionStorage.getItem("activeUser"), 10),
           name: name,
           task: task,
           dueDate: dueDate,
           isCompleted: false
         }
-        saveTask(newEvent)
+        saveTask(newTask)
           .then(getTasks)
           .then(() => {
             const message = new CustomEvent("newTaskSaved");
@@ -86,14 +86,6 @@ export const AddTaskForm = () => {
           dialogElement.close()
           resetTaskForm();
       };
-
-
-        const resetTaskForm = () => {
-          document.querySelector("#taskName").value = "";
-          document.querySelector("#taskText").value = "";
-          document.querySelector("#taskDate").value = "";
-        };
-
 
       }
     }
