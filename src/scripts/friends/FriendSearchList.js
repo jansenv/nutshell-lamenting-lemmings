@@ -38,9 +38,9 @@ export const SearchFriendsList=()=>{
         })
         contentTarget.innerHTML = `<label>Search Results:</label>
         <button class="button--close">X</button><hr>
-        <div class="searchedUsers">
+        
         ${reducedUsers.map(ass=>SearchFriend(ass)).join("")}
-        </div>`
+        `
         contentTarget.show()
         initializeDialogButtonEvents()
       }
