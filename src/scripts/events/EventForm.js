@@ -15,35 +15,45 @@ export const AddEventForm = () => {
 
     eventHub.addEventListener("click", e => {
         if (e.target.id === "saveEventButton") {
+          const name = document.querySelector("#eventNameText").value
+          const location = document.querySelector("#eventLocationText").value
+          const timestamp = document.querySelector("#eventDate").value
+
         const hiddenInputValue = document.querySelector("#event-id").value
         
         if (hiddenInputValue !== "") {
+          if (name === "" || location === "" || timestamp === "" ) {
+            window.alert("Please Fill out all Input Fields")
+          } else {
         const editedEvent = {
             userId: parseInt(sessionStorage.getItem("activeUser"), 10),
-            name: document.querySelector("#eventNameText").value,
-            location: document.querySelector("#eventLocationText").value,
-            timestamp: document.querySelector("#eventDate").value,
+            name: name,
+            location: location,
+            timestamp: timestamp,
             id: parseInt(document.querySelector("#event-id").value, 10)
         }
 
         editEvent(editedEvent).then(() => {
           eventHub.dispatchEvent(new CustomEvent("eventHasBeenEdited"))
         }).then(() => resetEventForm())
-        
+      } 
         document.querySelector("#event-id").value = ""
       } else {
+        if (name === "" || location === "" || timestamp === "" ) {
+          window.alert("Please Fill out all Input Fields")
+        } else {
         const newEvent = {
             userId: parseInt(sessionStorage.getItem("activeUser"), 10),
-            name: document.querySelector("#eventNameText").value,
-            location: document.querySelector("#eventLocationText").value,
-            timestamp: document.querySelector("#eventDate").value
+            name: name,
+            location: location,
+            timestamp: timestamp  
         }
 
         saveEvent(newEvent).then(getEvents).then(() => {
             const message = new CustomEvent("newEventSaved")
             eventHub.dispatchEvent(message)
         }).then(() => resetEventForm())
-        
+      }
     }
     }})
 
@@ -62,6 +72,7 @@ export const AddEventForm = () => {
       document.getElementById("event-id").value = theFoundEvent.id
       document.getElementById("eventNameText").value = theFoundEvent.name
       document.getElementById("eventLocationText").value = theFoundEvent.location
+      document.getElementById("eventDate").value = theFoundEvent.timestamp
 
       const message = new CustomEvent("editEventButtonClicked")
       eventHub.dispatchEvent(message)
