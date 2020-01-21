@@ -13,11 +13,16 @@ export const Ad = ()=>{
   eventHub.addEventListener("click", e=>{
     if(e.target.classList.contains("AdImage")){
 const adArray = useAds()
-let randomNumber = Math.floor(Math.random() * 3) + 1;
+let oldNumber = parseInt(e.target.id,10)
+let number = ""
+if(oldNumber===3){
+  number = 1
+}else{
+  number = oldNumber + 1
+}
 
-console.log("adNumber", randomNumber)
 
-let selectedAd = adArray.find(AD=>AD.id === randomNumber)
+let selectedAd = adArray.find(AD=>AD.id === number)
 console.log(selectedAd)
   renderAd(selectedAd)
     }
@@ -36,6 +41,6 @@ eventHub.addEventListener("userLoggedOut", e=>{
 
 
 const renderAd=(ad)=>{
-contentTarget.innerHTML = `<img CLASS ="AdImage"src="${ad.img}">`
+contentTarget.innerHTML = `<img id="${ad.id}" class="AdImage" src="${ad.img}">`
 }
 }
