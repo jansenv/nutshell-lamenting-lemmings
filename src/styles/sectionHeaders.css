@@ -1,0 +1,10 @@
+.sectionHeader {
+    font-weight: bold;
+    font-size: 24px;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.sectionHeaderButton {
+    float: right;
+}

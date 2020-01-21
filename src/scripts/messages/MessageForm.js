@@ -61,7 +61,8 @@ export const AddMessageForm = () => {
   const render = () => {
   contentTarget.innerHTML =   
     `<div class="addMessage">
-        <button id="button--addMessage">Add Message</button>
+        <div class="sectionHeader">Messages
+        <button class="sectionHeaderButton" id="button--addMessage">Add Message</button>
         
         <dialog class="dialog--addMessage">
         <input type="hidden" id="message-id"/>
@@ -69,14 +70,15 @@ export const AddMessageForm = () => {
         <label class="dialogTitles">Add a New Message!</label>
         <button class="button--close">X</button>
         <hr>
-            <div>
-              <label for="messageNameText">Message:</label>
-              <input id="messageText" type="text" />
-              <br>
-
-            </div>
-            <button class="button--save" id="saveMessageButton">Save</button>         
+        <div>
+        <label for="messageNameText">Message:</label>
+        <input id="messageText" type="text" />
+        <br>
+        
+        </div>
+        <button class="button--save" id="saveMessageButton">Save</button>         
         </dialog>
+        </div>
     </div>`
   }
   eventHub.addEventListener("userLoggedIn", e => {

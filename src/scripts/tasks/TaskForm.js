@@ -114,31 +114,33 @@ export const AddTaskForm = () => {
 
   const render = () => {
     contentTarget.innerHTML = `<div class="addTask">
-          <button id="button--addTask">Add Task</button>
-
+          <div class="sectionHeader">Tasks
+          <button class="sectionHeaderButton" id="button--addTask">Add Task</button>
+          
           <dialog class="dialog--addTask">
           <label class="dialogTitles">Add a New Task!</label>
           <button class="button--close redX">X</button>
           <hr>
-              <div>
-                <input type="hidden" id="taskId" />
-                
-                <label for="taskName">Name of Task:</label>
-                <input id="taskName" type="text" />
-                <br>
-                <label for="taskText">Task Description:</label>
-                <input id="taskText" type="text" />
-                <br>
-                <label for="taskDate">Expected Completion Date:</label>
-                <input type="datetime-local" id="taskDate">
-                <br>
-
-                <input type="hidden" id="taskId" />
-                <input type="hidden" id="checkbox" value=FALSE />
-              </div>
-
-              <button class="button--save" id="saveTaskButton">Save</button>         
+          <div>
+          <input type="hidden" id="taskId" />
+          
+          <label for="taskName">Name of Task:</label>
+          <input id="taskName" type="text" />
+          <br>
+          <label for="taskText">Task Description:</label>
+          <input id="taskText" type="text" />
+          <br>
+          <label for="taskDate">Expected Completion Date:</label>
+          <input type="datetime-local" id="taskDate">
+          <br>
+          
+          <input type="hidden" id="taskId" />
+          <input type="hidden" id="checkbox" value=FALSE />
+          </div>
+          
+          <button class="button--save" id="saveTaskButton">Save</button>         
           </dialog>
+          </div>
       </div>`;
   };
   eventHub.addEventListener("userLoggedIn", e => {

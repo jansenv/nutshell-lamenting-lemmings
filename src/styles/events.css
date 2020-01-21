@@ -1,8 +1,18 @@
+.eventCard {
+  background-color: rgb(255, 255, 255, 0.75);
+  border-radius: 10px;
+  padding: 2.5px 20px 20px 20px;
+  margin: 25px;
+}
+
 .otherUsersEventCard {
-  background-color: rgb(255, 248, 200, 0.5);
+  background-color: rgb(255, 248, 200, 0.75);
   font-style: italic;
   border-radius: 10px;
+  padding: 2.5px 20px 20px 20px;
+  margin: 25px;
 }
+
 
 .eventCard:first-child {
   background-color: rgb(218, 165, 32, 0.75);

@@ -1,15 +1,25 @@
 @import 'log-in.css';
+@import 'nav.css';
 @import 'news.css';
 @import 'events.css';
 @import 'tasks.css';
 @import 'chat.css';
+@import 'sectionHeaders.css';
+@import 'messages.css';
+@import 'dialog.css';
+@import 'friendList.css';
 
 body {
-  background-image: url(../imgs/wallpaper-1.jpg);
-  background-size: cover;
+  background-color: rgb(235, 235, 235);
+  background-image: url(../imgs/wallpaper-2.jpg);
+  background-attachment: fixed;
 }
 
 .logOut {
+  background: rgba(0, 0, 0, 0.5);;
+  border-radius: 8px;
+  padding: 10px;
+  color: red;
   float: right;
   font-family: cursive;
   font-size: 18px;
@@ -33,6 +43,7 @@ body {
 
 .flexDiv {
   display: flex;
+  justify-content: space-evenly;
 }
 
 .social{

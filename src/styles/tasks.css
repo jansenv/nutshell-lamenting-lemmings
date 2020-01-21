@@ -1,18 +1,7 @@
-.tasks {
+.taskCSS {
     background-color: rgb(255, 248, 200, 0.75);
     font-style: italic;
     border-radius: 10px;
+    padding: 2.5px 20px 20px 20px;
+    margin: 25px;
 }
-
-/* 
-.tasksCompleted {
-    background-color: rgb(255, 248, 200, 0.75);
-    font-style: italic;
-    border-radius: 10px;
-}
-
-.tasksToDo {
-    background-color: rgb(255, 248, 200, 0.75);
-    font-style: italic;
-    border-radius: 10px;
-} */

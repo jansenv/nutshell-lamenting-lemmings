@@ -38,8 +38,7 @@ const NewsList = () => {
   })
 
   const render = (articles) => {
-    contentTarget.innerHTML = ""
-    contentTarget.innerHTML += 
+    contentTarget.innerHTML =  
     articles.map(news => NewsArticle(news)).join("")
   }
   

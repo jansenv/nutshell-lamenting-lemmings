@@ -35,7 +35,7 @@ export const Task = (task) => {
   }
 
   return `
-  <section>
+  <section class="taskCSS">
   <div class="taskFields">
     <h3>Task: ${task.name}</h3>
     <div>Task Description: ${task.task}</div>
