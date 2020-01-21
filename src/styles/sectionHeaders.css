@@ -1,10 +1,20 @@
+.sectionTitle{
+    margin-top: 50px;
+    font-weight: bold;
+    font-size: 36px;
+    text-align: center;
+    color: whitesmoke;
+
+}
 .sectionHeader {
     font-weight: bold;
     font-size: 24px;
-    margin-top: 50px;
     text-align: center;
+    color: whitesmoke;
 }
 
 .sectionHeaderButton {
     float: right;
+    margin-right: 10px;
+    margin-top: 10px;
 }

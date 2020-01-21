@@ -116,7 +116,6 @@ export const AddTaskForm = () => {
     contentTarget.innerHTML = `<div class="addTask">
           <div class="sectionHeader">Tasks
           <button class="sectionHeaderButton" id="button--addTask">Add Task</button>
-          
           <dialog class="dialog--addTask">
           <label class="dialogTitles">Add a New Task!</label>
           <button class="button--close redX">X</button>

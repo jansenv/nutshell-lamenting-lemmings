@@ -95,7 +95,7 @@ export const AddNewsForm = () => {
             <input id="articleTitle" type="text" />
             <br>
             <label for="articleURL">URL:</label>
-                <input id="articleURL" type="text" />
+                <input id="articleURL"  placeholder="www.google.com" type="text" />
                 <br>
                 <label for="articleSynopsis">Description:</label>
                 <input type="text" id="articleSynopsis">
