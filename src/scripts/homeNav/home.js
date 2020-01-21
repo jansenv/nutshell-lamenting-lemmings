@@ -4,6 +4,7 @@ import { useUsers } from "../users/UsersDataProvider.js"
 
 const eventHub = document.querySelector(".container")
 const contentTarget = document.querySelector(".home")
+const contentElement = document.querySelector(".navigation")
 
 
 export const Home =()=>{
@@ -14,12 +15,20 @@ export const Home =()=>{
       console.log("activeUser", sessionStorage.getItem("activeUser"))
       eventHub.dispatchEvent(new CustomEvent("userLoggedOut"))
       contentTarget.innerHTML=""
+      contentElement.innerHTML=""
     }
   })
   const render = (user)=>{
     contentTarget.innerHTML = `
     <p class="welcomeMessage">HELLO ${user.firstName} ${user.lastName}!</p>
-  <a href="#" class="logOut" id="logOut">Log Out</a>
+    <a href="#" class="logOut" id="logOut">Log Out</a>
+    `
+
+    contentElement.innerHTML = `
+    <div>Jump to:</div>
+    <a href="#news" class="NETnav" id="newsJump">News</a>
+    <a href="#events" class="NETnav" id="eventsJump">Events</a>
+    <a href="#tasks" class="NETnav" id="tasksJump">Your Tasks</a>
     `
   }
 
