@@ -15,7 +15,7 @@ export const Ad = ()=>{
 const adArray = useAds()
 let oldNumber = parseInt(e.target.id,10)
 let number = ""
-if(oldNumber===3){
+if(oldNumber=== adArray.length){
   number = 1
 }else{
   number = oldNumber + 1
@@ -23,15 +23,15 @@ if(oldNumber===3){
 
 
 let selectedAd = adArray.find(AD=>AD.id === number)
-console.log(selectedAd)
+
   renderAd(selectedAd)
     }
   })
 
   eventHub.addEventListener("userLoggedIn", e=>{
     const adArray = useAds()
-let randomNumber = Math.floor(Math.random() * 3) + 1;
-console.log("adNumber", randomNumber)
+let randomNumber = Math.floor(Math.random() * adArray.length) + 1;
+
 let selectedAd = adArray.find(AD=>AD.id === randomNumber)
   renderAd(selectedAd)
   })
