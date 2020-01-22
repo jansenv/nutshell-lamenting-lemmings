@@ -15,7 +15,7 @@ export const Ad = ()=>{
 const adArray = useAds()
 let oldNumber = parseInt(e.target.id,10)
 let number = ""
-if(oldNumber===4){
+if(oldNumber=== adArray.length){
   number = 1
 }else{
   number = oldNumber + 1
