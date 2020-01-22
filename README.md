@@ -1,5 +1,11 @@
 # Nutshell: The Information Dashboard
 
+## Project Description
+
+Nutshell is a new product offering that you have been tasked with building. It's a dashboard for people to use to organize their daily tasks, events, news article, friends, and chat messages.
+
+Our target demographic was "Parkour Enthusiasts".
+
 ## Instructions
 
 1. Clone this repository
@@ -9,11 +15,6 @@
 1. Run `json-server -w database.json -p 3000` in `api` directory
 1. In a separate terminal, `cd` into `src` directory
 1. Run local host server
-
-
-Nutshell is a new product offering that you have been tasked with building. It's a dashboard for people to use to organize their daily tasks, events, news article, friends, and chat messages.
-
-Our target demographic was "Parkour Enthusiasts".
 
 ## Sample Api
 
