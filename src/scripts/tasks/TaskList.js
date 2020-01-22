@@ -55,12 +55,12 @@ const TaskList = () => {
 
 
   const completedTaskRender = (taskArray) => {
-    contentTargetCompletedTasks.innerHTML = `<h2>CompletedTasks</h2> ${taskArray.map (task => Task(task)).join("")}`
+    contentTargetCompletedTasks.innerHTML = `<h2 class= "taskTitle">CompletedTasks:</h2> ${taskArray.map (task => Task(task)).join("")}`
   }
 
 
   const notCompletedTaskRender = (taskArray) => {
-    contentTarget.innerHTML = `<h2>To Do List:</h2> ${taskArray.map (task => Task(task)).join("")}`
+    contentTarget.innerHTML = `<h2 class="taskTitle">To Do List:</h2> ${taskArray.map (task => Task(task)).join("")}`
   }
 
   eventHub.addEventListener("userLoggedIn", e => {

@@ -1,3 +1,5 @@
+// Authored by: Willy Metcalf
+
 import { useAds } from "./adsDataProvider.js"
 
 
