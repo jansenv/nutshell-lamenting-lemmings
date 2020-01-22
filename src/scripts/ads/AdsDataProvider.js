@@ -1,3 +1,5 @@
+// Authored by: Willy Metcalf
+
 let Ads = []
 
 export const useAds = () => Ads.slice()

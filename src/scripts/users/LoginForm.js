@@ -77,6 +77,8 @@ export const LoginForm = () => {
               return singleUser
             }
           })
+          addCSSClassToNETBlocks()
+
           sessionStorage.setItem("activeUser", foundUser.id)
           const message = new CustomEvent("userLoggedIn")
           eventHub.dispatchEvent(message)
