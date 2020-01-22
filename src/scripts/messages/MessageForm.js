@@ -36,7 +36,7 @@ export const AddMessageForm = () => {
     
       const resetMessageForm = () => {
           document.querySelector("#messageText").value = ""
-          
+          document.querySelector("#message-id").value = ""
       }
       resetMessageForm()
       const dialogElement = e.target.parentNode
