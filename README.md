@@ -1,5 +1,7 @@
 # Nutshell: The Information Dashboard
 
+![Screencap of the project](src/imgs/screenshot.png)
+
 ## Project Description
 
 Nutshell is a new product offering that you have been tasked with building. It's a dashboard for people to use to organize their daily tasks, events, news article, friends, and chat messages.
